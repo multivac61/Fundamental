@@ -229,10 +229,20 @@ struct Wavetable {
 	}
 
 	void loadDialog() {
+#ifdef USING_CARDINAL_NOT_RACK
+		async_dialog_filebrowser(false, wavetableDir.empty() ? NULL : wavetableDir.c_str(), "Load wavetable", [this](char* pathC) {
+			loadPathSelected(pathC);
+		});
+#else
 		osdialog_filters* filters = osdialog_filters_parse(WAVETABLE_FILTERS);
 		DEFER({osdialog_filters_free(filters);});
 
 		char* pathC = osdialog_file(OSDIALOG_OPEN, wavetableDir.empty() ? NULL : wavetableDir.c_str(), NULL, filters);
+		loadPathSelected(pathC);
+#endif
+	}
+
+	void loadPathSelected(char* pathC) {
 		if (!pathC) {
 			// Fail silently
 			return;
@@ -269,10 +279,20 @@ struct Wavetable {
 	}
 
 	void saveDialog() const {
+#ifdef USING_CARDINAL_NOT_RACK
+		async_dialog_filebrowser(true, wavetableDir.empty() ? NULL : wavetableDir.c_str(), "Save wavetable", [this](char* pathC) {
+			savePathSelected(pathC);
+		});
+#else
 		osdialog_filters* filters = osdialog_filters_parse(WAVETABLE_FILTERS);
 		DEFER({osdialog_filters_free(filters);});
 
 		char* pathC = osdialog_file(OSDIALOG_SAVE, wavetableDir.empty() ? NULL : wavetableDir.c_str(), filename.c_str(), filters);
+		savePathSelected(pathC);
+#endif
+	}
+
+	void savePathSelected(char* pathC) const {
 		if (!pathC) {
 			// Cancel silently
 			return;

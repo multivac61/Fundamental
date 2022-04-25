@@ -311,12 +311,9 @@ struct WTVCOWidget : ModuleWidget {
 
 		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos6), module, WTVCO::WAVE_OUTPUT));
 
-		/* TODO
-		WTDisplay<WTVCO>* display = createWidget<WTDisplay<WTVCO>>(Vec(0.004, 13.04));
-		display->box.size = Vec(35.56, 29.224);
+		WTDisplay<WTVCO>* display = createWidgetCentered<WTDisplay<WTVCO>>(Vec(kPosCenter, kVerticalPos4+kRACK_JACK_SIZE*1.25f));
 		display->module = module;
 		addChild(display);
-		*/
 	}
 
 	void appendContextMenu(Menu* menu) override {

@@ -339,8 +339,16 @@ static Wavetable defaultWavetable;
 
 
 template <class TModule>
-struct WTDisplay : LedDisplay {
+struct WTDisplay : Widget {
+	static constexpr const float kRatio = 29.224f / 35.56f;
+	static constexpr const float kWidth = kRACK_GRID_WIDTH * 3;
+	static constexpr const float kHeight = kWidth * kRatio;
+
 	TModule* module;
+
+	WTDisplay() {
+		box.size = Vec(kWidth, kHeight);
+	}
 
 	void drawLayer(const DrawArgs& args, int layer) override {
 		nvgScissor(args.vg, RECT_ARGS(args.clipBox));
@@ -358,10 +366,11 @@ struct WTDisplay : LedDisplay {
 			std::shared_ptr<Font> font = APP->window->loadFont(fontPath);
 			if (!font)
 				return;
-			nvgFontSize(args.vg, 13);
+			nvgFontSize(args.vg, 8);
 			nvgFontFaceId(args.vg, font->handle);
-			nvgFillColor(args.vg, SCHEME_YELLOW);
-			nvgText(args.vg, 4.0, 13.0, wavetable.filename.c_str(), NULL);
+			nvgFillColor(args.vg, nvgRGBf(0.76f, 0.11f, 0.22f));
+			nvgTextAlign(args.vg, NVG_ALIGN_CENTER);
+			nvgText(args.vg, box.size.x/2, 13.0, wavetable.filename.c_str(), NULL);
 
 			// Get wavetable metadata
 			if (wavetable.waveLen < 2)
@@ -407,13 +416,13 @@ struct WTDisplay : LedDisplay {
 			}
 			nvgLineCap(args.vg, NVG_ROUND);
 			nvgMiterLimit(args.vg, 2.f);
-			nvgStrokeWidth(args.vg, 1.5f);
-			nvgStrokeColor(args.vg, SCHEME_YELLOW);
+			nvgStrokeWidth(args.vg, 1.f);
+			nvgStrokeColor(args.vg, nvgRGBf(0.76f, 0.11f, 0.22f));
 			nvgStroke(args.vg);
 		}
 
 		nvgResetScissor(args.vg);
-		LedDisplay::drawLayer(args, layer);
+		Widget::drawLayer(args, layer);
 	}
 
 	// void onButton(const ButtonEvent& e) override {

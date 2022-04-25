@@ -253,7 +253,7 @@ struct WTLFOWidget : ModuleWidget {
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 226.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 196.f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 156.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 110.f;
+	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 101.f;
 	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 
 	WTLFOWidget(WTLFO* module) {
@@ -282,12 +282,9 @@ struct WTLFOWidget : ModuleWidget {
 
 		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos6), module, WTLFO::WAVE_OUTPUT));
 
-		/* TODO
-		WTDisplay<WTLFO>* display = createWidget<WTDisplay<WTLFO>>(Vec(0.004, 13.04));
-		display->box.size = Vec(35.56, 29.224);
+		WTDisplay<WTLFO>* display = createWidgetCentered<WTDisplay<WTLFO>>(Vec(kPosCenter, kVerticalPos4+kRACK_JACK_SIZE*1.25f));
 		display->module = module;
 		addChild(display);
-		*/
 	}
 
 	void appendContextMenu(Menu* menu) override {

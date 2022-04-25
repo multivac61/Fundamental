@@ -40,8 +40,8 @@
      id="namedview168"
      showgrid="false"
      inkscape:zoom="1.7566021"
-     inkscape:cx="-135.48885"
-     inkscape:cy="171.35355"
+     inkscape:cx="-173.63067"
+     inkscape:cy="142.32022"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -545,7 +545,7 @@
      aria-label="INV"
      id="text14110-5-6-7-9-6-3-9-4"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(0.686132)">
+     transform="translate(0.686132,8.68963)">
     <path
        d="m 21.804527,256.40637 v -5.72656 h 0.757813 v 5.72656 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -644,7 +644,7 @@
      aria-label="OFST"
      id="text14110-5-6-7-9-6-3-9-6-7"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(-1.793607)">
+     transform="translate(-1.793607,10.00045)">
     <path
        d="m 67.650795,252.30682 q 0,-1.42578 0.765625,-2.23047 0.765625,-0.80859 1.976562,-0.80859 0.792969,0 1.429688,0.37891 0.636719,0.3789 0.96875,1.05859 0.335937,0.67578 0.335937,1.53516 0,0.87109 -0.351562,1.55859 -0.351563,0.6875 -0.996094,1.04297 -0.644531,0.35156 -1.390625,0.35156 -0.808594,0 -1.445312,-0.39062 -0.636719,-0.39063 -0.964844,-1.06641 -0.328125,-0.67578 -0.328125,-1.42969 z m 0.78125,0.0117 q 0,1.03516 0.554687,1.63281 0.558594,0.59375 1.398438,0.59375 0.855469,0 1.40625,-0.60156 0.554687,-0.60156 0.554687,-1.70703 0,-0.69922 -0.238281,-1.21875 -0.234375,-0.52344 -0.691406,-0.80859 -0.453125,-0.28907 -1.019531,-0.28907 -0.804688,0 -1.386719,0.55469 -0.578125,0.55078 -0.578125,1.84375 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"

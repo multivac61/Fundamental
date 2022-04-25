@@ -5,12 +5,12 @@
   "license": "GPL-3.0-or-later",
   "brand": "VCV",
   "author": "VCV",
-  "authorEmail": "support@vcvrack.com",
-  "pluginUrl": "https://vcvrack.com/Fundamental",
+  "authorEmail": "",
+  "pluginUrl": "https://github.com/CardinalModules/Fundamental",
   "authorUrl": "https://vcvrack.com/",
   "manualUrl": "https://vcvrack.com/Fundamental#manual",
-  "sourceUrl": "https://github.com/VCVRack/Fundamental",
-  "changelogUrl": "https://github.com/VCVRack/Fundamental/blob/v2/CHANGELOG.md",
+  "sourceUrl": "https://github.com/CardinalModules/Fundamental",
+  "changelogUrl": "https://github.com/CardinalModules/Fundamental/blob/v2/CHANGELOG.md",
   "modules": [
     {
       "slug": "VCO",

@@ -282,20 +282,20 @@ struct RandomWidget : ModuleWidget {
 		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, Random::EXTERNAL_INPUT));
 		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, Random::OFFSET_PARAM, Random::OFFSET_LIGHT));
 
-		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos2), module, Random::RATE_CV_PARAM));
-		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos2of3, kVerticalPos2), module, Random::RAND_CV_PARAM));
-		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos3of3, kVerticalPos2), module, Random::SHAPE_CV_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos2), module, Random::RATE_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos2of3, kVerticalPos2), module, Random::RAND_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos3of3, kVerticalPos2), module, Random::SHAPE_PARAM));
 
-		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos1of3, kVerticalPos3), module, Random::RATE_PARAM));
-		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos3), module, Random::RAND_PARAM));
-		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3of3, kVerticalPos3), module, Random::SHAPE_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos1of3, kVerticalPos3), module, Random::RATE_CV_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos3), module, Random::RAND_CV_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3of3, kVerticalPos3), module, Random::SHAPE_CV_PARAM));
 
 		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos4), module, Random::RATE_INPUT));
 		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos4), module, Random::RAND_INPUT));
 		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos4), module, Random::SHAPE_INPUT));
 
-		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos5), module, Random::PROB_CV_PARAM));
-		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos5), module, Random::PROB_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos5), module, Random::PROB_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos5), module, Random::PROB_CV_PARAM));
 		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos5), module, Random::PROB_INPUT));
 
 		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos6), module, Random::STEPPED_OUTPUT));

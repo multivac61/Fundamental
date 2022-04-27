@@ -110,7 +110,7 @@ struct VCA : Module {
 
 
 struct VCAWidget : ModuleWidget {
-	typedef CardinalBlackKnob<35> Knob;
+	typedef FundamentalBlackKnob<35> Knob;
 
 	static constexpr const int kWidth = 5;
 	static constexpr const float kBorderPadding = 5.f;
@@ -140,17 +140,17 @@ struct VCAWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInput<CardinalPort>(Vec(kPosCenter, kVerticalPos1), module, VCA::IN1_INPUT));
-		addInput(createInput<CardinalPort>(Vec(kPosLeft, kVerticalPos2), module, VCA::EXP1_INPUT));
-		addInput(createInput<CardinalPort>(Vec(kPosRight, kVerticalPos2), module, VCA::LIN1_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, VCA::IN1_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, VCA::EXP1_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, VCA::LIN1_INPUT));
 		addParam(createParam<Knob>(Vec(kPosCenter - 7.f /* FIXME */, kVerticalPos3), module, VCA::LEVEL1_PARAM));
-		addOutput(createOutput<CardinalPort>(Vec(kPosCenter, kVerticalPos4), module, VCA::OUT1_OUTPUT));
+		addOutput(createOutput<FundamentalPort>(Vec(kPosCenter, kVerticalPos4), module, VCA::OUT1_OUTPUT));
 
-		addInput(createInput<CardinalPort>(Vec(kPosCenter, kVerticalPos5), module, VCA::IN2_INPUT));
-		addInput(createInput<CardinalPort>(Vec(kPosLeft, kVerticalPos6), module, VCA::EXP2_INPUT));
-		addInput(createInput<CardinalPort>(Vec(kPosRight, kVerticalPos6), module, VCA::LIN2_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosCenter, kVerticalPos5), module, VCA::IN2_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, VCA::EXP2_INPUT));
+		addInput(createInput<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, VCA::LIN2_INPUT));
 		addParam(createParam<Knob>(Vec(kPosCenter - 7.f /* FIXME */, kVerticalPos7), module, VCA::LEVEL2_PARAM));
-		addOutput(createOutput<CardinalPort>(Vec(kPosCenter, kVerticalPos8), module, VCA::OUT2_OUTPUT));
+		addOutput(createOutput<FundamentalPort>(Vec(kPosCenter, kVerticalPos8), module, VCA::OUT2_OUTPUT));
 	}
 };
 

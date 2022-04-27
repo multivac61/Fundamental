@@ -184,10 +184,10 @@ struct OctaveWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Octave::OCTAVE_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Octave::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Octave::OCTAVE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Octave::PITCH_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Octave::PITCH_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Octave::PITCH_OUTPUT));
 
 		/* TODO
 		OctaveDisplay* display = createWidget<OctaveDisplay>(Vec(0.0, 13.039));

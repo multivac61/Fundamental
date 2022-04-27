@@ -93,7 +93,7 @@ struct Mixer : Module {
 
 
 struct MixerWidget : ModuleWidget {
-	typedef CardinalBlackKnob<30> Knob;
+	typedef FundamentalBlackKnob<30> Knob;
 
 	static constexpr const int kWidth = 3;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
@@ -114,16 +114,16 @@ struct MixerWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Mixer::IN_INPUTS + 0));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Mixer::IN_INPUTS + 1));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Mixer::IN_INPUTS + 2));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos4), module, Mixer::IN_INPUTS + 3));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos5), module, Mixer::IN_INPUTS + 4));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos6), module, Mixer::IN_INPUTS + 5));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Mixer::IN_INPUTS + 0));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Mixer::IN_INPUTS + 1));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Mixer::IN_INPUTS + 2));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos4), module, Mixer::IN_INPUTS + 3));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos5), module, Mixer::IN_INPUTS + 4));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos6), module, Mixer::IN_INPUTS + 5));
 
 		addParam(createParamCentered<Knob>(Vec(kHorizontalCenter, kVerticalPos7), module, Mixer::LEVEL_PARAM));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos8), module, Mixer::OUT_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos8), module, Mixer::OUT_OUTPUT));
 	}
 
 	void appendContextMenu(Menu* menu) override {

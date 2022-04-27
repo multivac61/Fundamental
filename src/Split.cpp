@@ -70,24 +70,24 @@ struct SplitWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPosIn), module, Split::POLY_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPosIn), module, Split::POLY_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos1), module, Split::MONO_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos2), module, Split::MONO_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos3), module, Split::MONO_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos4), module, Split::MONO_OUTPUTS + 3));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos5), module, Split::MONO_OUTPUTS + 4));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos6), module, Split::MONO_OUTPUTS + 5));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos7), module, Split::MONO_OUTPUTS + 6));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos8), module, Split::MONO_OUTPUTS + 7));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, Split::MONO_OUTPUTS + 8));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos2), module, Split::MONO_OUTPUTS + 9));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos3), module, Split::MONO_OUTPUTS + 10));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, Split::MONO_OUTPUTS + 11));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos5), module, Split::MONO_OUTPUTS + 12));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos6), module, Split::MONO_OUTPUTS + 13));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos7), module, Split::MONO_OUTPUTS + 14));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos8), module, Split::MONO_OUTPUTS + 15));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos1), module, Split::MONO_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, Split::MONO_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos3), module, Split::MONO_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, Split::MONO_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos5), module, Split::MONO_OUTPUTS + 4));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, Split::MONO_OUTPUTS + 5));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos7), module, Split::MONO_OUTPUTS + 6));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos8), module, Split::MONO_OUTPUTS + 7));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, Split::MONO_OUTPUTS + 8));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, Split::MONO_OUTPUTS + 9));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos3), module, Split::MONO_OUTPUTS + 10));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, Split::MONO_OUTPUTS + 11));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos5), module, Split::MONO_OUTPUTS + 12));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, Split::MONO_OUTPUTS + 13));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos7), module, Split::MONO_OUTPUTS + 14));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos8), module, Split::MONO_OUTPUTS + 15));
 	}
 };
 

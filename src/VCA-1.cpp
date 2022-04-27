@@ -145,9 +145,9 @@ struct VCA_1Widget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 307.f - 11.f), module, VCA_1::IN_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCA_1::CV_INPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 25.f - 11.f), module, VCA_1::OUT_OUTPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 307.f - 11.f), module, VCA_1::IN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCA_1::CV_INPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 25.f - 11.f), module, VCA_1::OUT_OUTPUT));
 
 		VCA_1VUKnob* knob = createParam<VCA_1VUKnob>(Vec(6.5f, kRACK_GRID_HEIGHT - 120.f - 176.f), module, VCA_1::LEVEL_PARAM);
 		knob->box.size = Vec(32.f, 176.f);

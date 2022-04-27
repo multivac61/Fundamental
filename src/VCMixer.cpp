@@ -120,9 +120,9 @@ struct VCMixer : Module {
 
 
 struct VCMixerWidget : ModuleWidget {
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<27> MediumKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<27> MediumKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 9;
 	static constexpr const float kBorderPadding = 12.5f + kRACK_JACK_HALF_SIZE;
@@ -153,10 +153,10 @@ struct VCMixerWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1, kVerticalPos1), module, VCMixer::CH_INPUTS + 0));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2, kVerticalPos1), module, VCMixer::CH_INPUTS + 1));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3, kVerticalPos1), module, VCMixer::CH_INPUTS + 2));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos4, kVerticalPos1), module, VCMixer::CH_INPUTS + 3));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos1), module, VCMixer::CH_INPUTS + 0));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos1), module, VCMixer::CH_INPUTS + 1));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos1), module, VCMixer::CH_INPUTS + 2));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos1), module, VCMixer::CH_INPUTS + 3));
 
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos1, kVerticalPos2), module, VCMixer::LVL_PARAMS + 0));
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos2, kVerticalPos2), module, VCMixer::LVL_PARAMS + 1));
@@ -165,20 +165,20 @@ struct VCMixerWidget : ModuleWidget {
 
 		// FIXME missing cv level params @ kVerticalPos3
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1, kVerticalPos4), module, VCMixer::CV_INPUTS + 0));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2, kVerticalPos4), module, VCMixer::CV_INPUTS + 1));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3, kVerticalPos4), module, VCMixer::CV_INPUTS + 2));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos4, kVerticalPos4), module, VCMixer::CV_INPUTS + 3));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos4), module, VCMixer::CV_INPUTS + 0));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos4), module, VCMixer::CV_INPUTS + 1));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos4), module, VCMixer::CV_INPUTS + 2));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos4), module, VCMixer::CV_INPUTS + 3));
 
-		addInput(createInputCentered<CardinalPort>(Vec(14.925f + kRACK_JACK_HALF_SIZE, kVerticalPos5), module, VCMixer::MIX_CV_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(14.925f + kRACK_JACK_HALF_SIZE, kVerticalPos5), module, VCMixer::MIX_CV_INPUT));
 		// FIXME missing cv mix param @ 52.74 + SmallKnob::kHalfSize / kVerticalPos5
 		addParam(createParamCentered<BigKnob>(Vec(86.f + BigKnob::kHalfSize, kVerticalPos5), module, VCMixer::MIX_LVL_PARAM));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos6), module, VCMixer::MIX_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos3, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos4, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos6), module, VCMixer::MIX_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos7), module, VCMixer::CH_OUTPUTS + 3));
 	}
 };
 

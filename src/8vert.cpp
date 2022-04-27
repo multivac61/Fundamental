@@ -99,7 +99,7 @@ struct _8vertWidget : ModuleWidget {
 	static constexpr const float kParam6Y = kRACK_GRID_HEIGHT - 64.f - 17.f;
 	static constexpr const float kParam7Y = kRACK_GRID_HEIGHT - 26.f - 17.f;
 
-	typedef CardinalBlackKnob<30> Knob;
+	typedef FundamentalBlackKnob<30> Knob;
 
 	_8vertWidget(_8vert* module) {
 		setModule(module);
@@ -119,23 +119,23 @@ struct _8vertWidget : ModuleWidget {
 		addParam(createParamCentered<Knob>(Vec(kPosCenter, kParam6Y), module, _8vert::GAIN_PARAMS + 6));
 		addParam(createParamCentered<Knob>(Vec(kPosCenter, kParam7Y), module, _8vert::GAIN_PARAMS + 7));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam0Y), module, _8vert::IN_INPUTS + 0));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam1Y), module, _8vert::IN_INPUTS + 1));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam2Y), module, _8vert::IN_INPUTS + 2));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam3Y), module, _8vert::IN_INPUTS + 3));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam4Y), module, _8vert::IN_INPUTS + 4));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam5Y), module, _8vert::IN_INPUTS + 5));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam6Y), module, _8vert::IN_INPUTS + 6));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kParam7Y), module, _8vert::IN_INPUTS + 7));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam0Y), module, _8vert::IN_INPUTS + 0));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam1Y), module, _8vert::IN_INPUTS + 1));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam2Y), module, _8vert::IN_INPUTS + 2));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam3Y), module, _8vert::IN_INPUTS + 3));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam4Y), module, _8vert::IN_INPUTS + 4));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam5Y), module, _8vert::IN_INPUTS + 5));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam6Y), module, _8vert::IN_INPUTS + 6));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kParam7Y), module, _8vert::IN_INPUTS + 7));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam0Y), module, _8vert::OUT_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam1Y), module, _8vert::OUT_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam2Y), module, _8vert::OUT_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam3Y), module, _8vert::OUT_OUTPUTS + 3));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam4Y), module, _8vert::OUT_OUTPUTS + 4));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam5Y), module, _8vert::OUT_OUTPUTS + 5));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam6Y), module, _8vert::OUT_OUTPUTS + 6));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kParam7Y), module, _8vert::OUT_OUTPUTS + 7));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam0Y), module, _8vert::OUT_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam1Y), module, _8vert::OUT_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam2Y), module, _8vert::OUT_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam3Y), module, _8vert::OUT_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam4Y), module, _8vert::OUT_OUTPUTS + 4));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam5Y), module, _8vert::OUT_OUTPUTS + 5));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam6Y), module, _8vert::OUT_OUTPUTS + 6));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kParam7Y), module, _8vert::OUT_OUTPUTS + 7));
 	}
 };
 

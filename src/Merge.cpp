@@ -93,24 +93,24 @@ struct MergeWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos1), module, Merge::MONO_INPUTS + 0));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos2), module, Merge::MONO_INPUTS + 1));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos3), module, Merge::MONO_INPUTS + 2));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos4), module, Merge::MONO_INPUTS + 3));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos5), module, Merge::MONO_INPUTS + 4));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos6), module, Merge::MONO_INPUTS + 5));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos7), module, Merge::MONO_INPUTS + 6));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos8), module, Merge::MONO_INPUTS + 7));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, Merge::MONO_INPUTS + 8));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos2), module, Merge::MONO_INPUTS + 9));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos3), module, Merge::MONO_INPUTS + 10));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, Merge::MONO_INPUTS + 11));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos5), module, Merge::MONO_INPUTS + 12));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos6), module, Merge::MONO_INPUTS + 13));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos7), module, Merge::MONO_INPUTS + 14));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos8), module, Merge::MONO_INPUTS + 15));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos1), module, Merge::MONO_INPUTS + 0));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, Merge::MONO_INPUTS + 1));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos3), module, Merge::MONO_INPUTS + 2));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, Merge::MONO_INPUTS + 3));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos5), module, Merge::MONO_INPUTS + 4));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, Merge::MONO_INPUTS + 5));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos7), module, Merge::MONO_INPUTS + 6));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos8), module, Merge::MONO_INPUTS + 7));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, Merge::MONO_INPUTS + 8));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, Merge::MONO_INPUTS + 9));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos3), module, Merge::MONO_INPUTS + 10));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, Merge::MONO_INPUTS + 11));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos5), module, Merge::MONO_INPUTS + 12));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, Merge::MONO_INPUTS + 13));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos7), module, Merge::MONO_INPUTS + 14));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos8), module, Merge::MONO_INPUTS + 15));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 26.f - 11.f), module, Merge::POLY_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 26.f - 11.f), module, Merge::POLY_OUTPUT));
 	}
 
 	void appendContextMenu(Menu* menu) override {

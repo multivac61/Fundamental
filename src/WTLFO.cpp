@@ -238,8 +238,8 @@ struct WTLFO : Module {
 
 
 struct WTLFOWidget : ModuleWidget {
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 7;
 	static constexpr const float kBorderPadding = 5.f;
@@ -265,8 +265,8 @@ struct WTLFOWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos1), module, WTLFO::RESET_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, WTLFO::CLOCK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos1), module, WTLFO::RESET_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, WTLFO::CLOCK_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kVerticalPos2), module, WTLFO::FREQ_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kVerticalPos2), module, WTLFO::POS_PARAM));
@@ -274,13 +274,13 @@ struct WTLFOWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kVerticalPos3), module, WTLFO::FM_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kVerticalPos3), module, WTLFO::POS_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos4), module, WTLFO::FM_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, WTLFO::POS_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, WTLFO::FM_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, WTLFO::POS_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, WTLFO::INVERT_PARAM, WTLFO::INVERT_LIGHT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosRight, kVerticalPos5), module, WTLFO::OFFSET_PARAM, WTLFO::OFFSET_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, WTLFO::INVERT_PARAM, WTLFO::INVERT_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosRight, kVerticalPos5), module, WTLFO::OFFSET_PARAM, WTLFO::OFFSET_LIGHT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos6), module, WTLFO::WAVE_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos6), module, WTLFO::WAVE_OUTPUT));
 
 		WTDisplay<WTLFO>* display = createWidgetCentered<WTDisplay<WTLFO>>(Vec(kPosCenter, kVerticalPos4+kRACK_JACK_SIZE*1.25f));
 		display->module = module;

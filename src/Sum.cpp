@@ -111,7 +111,7 @@ struct SumChannelDisplay : ChannelDisplay {
 
 
 struct SumWidget : ModuleWidget {
-	typedef CardinalBlackKnob<30> Knob;
+	typedef FundamentalBlackKnob<30> Knob;
 
 	static constexpr const int kWidth = 3;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
@@ -127,9 +127,9 @@ struct SumWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Sum::POLY_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Sum::POLY_INPUT));
 		addParam(createParamCentered<Knob>(Vec(kHorizontalCenter, kVerticalPos2), module, Sum::LEVEL_PARAM));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Sum::MONO_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Sum::MONO_OUTPUT));
 
 		/* TODO
 		addChild(createLightCentered<SmallSimpleLight<RedLight>>(Vec(kHorizontalCenter, 18.081), module, Sum::VU_LIGHTS + 0));

@@ -206,8 +206,8 @@ struct DelayWidget : ModuleWidget {
 	static constexpr const float kPosLeft = kBorderPadding + kUsableWidth * 0.25f;
 	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.75f;
 
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 312.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 248.f - BigKnob::kHalfSize;
@@ -227,8 +227,8 @@ struct DelayWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos1), module, Delay::IN_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, Delay::CLOCK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos1), module, Delay::IN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, Delay::CLOCK_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kVerticalPos2), module, Delay::TIME_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kVerticalPos2), module, Delay::FEEDBACK_PARAM));
@@ -236,8 +236,8 @@ struct DelayWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kVerticalPos3), module, Delay::TIME_CV_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kVerticalPos3), module, Delay::FEEDBACK_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos4), module, Delay::TIME_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, Delay::FEEDBACK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, Delay::TIME_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, Delay::FEEDBACK_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kVerticalPos5), module, Delay::TONE_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kVerticalPos5), module, Delay::MIX_PARAM));
@@ -245,11 +245,11 @@ struct DelayWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kVerticalPos6), module, Delay::TONE_CV_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kVerticalPos6), module, Delay::MIX_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos7), module, Delay::TONE_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos7), module, Delay::MIX_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos7), module, Delay::TONE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos7), module, Delay::MIX_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos8), module, Delay::WET_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos8), module, Delay::MIX_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos8), module, Delay::WET_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos8), module, Delay::MIX_OUTPUT));
 	}
 };
 

@@ -75,38 +75,38 @@ struct PulsesWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos1), module, Pulses::PUSH_PARAMS + 0, Pulses::PUSH_LIGHTS + 0));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos2), module, Pulses::PUSH_PARAMS + 1, Pulses::PUSH_LIGHTS + 1));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos3), module, Pulses::PUSH_PARAMS + 2, Pulses::PUSH_LIGHTS + 2));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos4), module, Pulses::PUSH_PARAMS + 3, Pulses::PUSH_LIGHTS + 3));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, Pulses::PUSH_PARAMS + 4, Pulses::PUSH_LIGHTS + 4));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos6), module, Pulses::PUSH_PARAMS + 5, Pulses::PUSH_LIGHTS + 5));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos7), module, Pulses::PUSH_PARAMS + 6, Pulses::PUSH_LIGHTS + 6));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos8), module, Pulses::PUSH_PARAMS + 7, Pulses::PUSH_LIGHTS + 7));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos9), module, Pulses::PUSH_PARAMS + 8, Pulses::PUSH_LIGHTS + 8));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos10), module, Pulses::PUSH_PARAMS + 9, Pulses::PUSH_LIGHTS + 9));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos1), module, Pulses::PUSH_PARAMS + 0, Pulses::PUSH_LIGHTS + 0));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos2), module, Pulses::PUSH_PARAMS + 1, Pulses::PUSH_LIGHTS + 1));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos3), module, Pulses::PUSH_PARAMS + 2, Pulses::PUSH_LIGHTS + 2));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos4), module, Pulses::PUSH_PARAMS + 3, Pulses::PUSH_LIGHTS + 3));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, Pulses::PUSH_PARAMS + 4, Pulses::PUSH_LIGHTS + 4));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos6), module, Pulses::PUSH_PARAMS + 5, Pulses::PUSH_LIGHTS + 5));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos7), module, Pulses::PUSH_PARAMS + 6, Pulses::PUSH_LIGHTS + 6));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos8), module, Pulses::PUSH_PARAMS + 7, Pulses::PUSH_LIGHTS + 7));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos9), module, Pulses::PUSH_PARAMS + 8, Pulses::PUSH_LIGHTS + 8));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos10), module, Pulses::PUSH_PARAMS + 9, Pulses::PUSH_LIGHTS + 9));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos1), module, Pulses::TRIG_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos2), module, Pulses::TRIG_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos3), module, Pulses::TRIG_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos4), module, Pulses::TRIG_OUTPUTS + 3));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos5), module, Pulses::TRIG_OUTPUTS + 4));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos6), module, Pulses::TRIG_OUTPUTS + 5));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos7), module, Pulses::TRIG_OUTPUTS + 6));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos8), module, Pulses::TRIG_OUTPUTS + 7));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos9), module, Pulses::TRIG_OUTPUTS + 8));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos10), module, Pulses::TRIG_OUTPUTS + 9));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, Pulses::TRIG_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos2), module, Pulses::TRIG_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos3), module, Pulses::TRIG_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos4), module, Pulses::TRIG_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos5), module, Pulses::TRIG_OUTPUTS + 4));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos6), module, Pulses::TRIG_OUTPUTS + 5));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos7), module, Pulses::TRIG_OUTPUTS + 6));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos8), module, Pulses::TRIG_OUTPUTS + 7));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos9), module, Pulses::TRIG_OUTPUTS + 8));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos10), module, Pulses::TRIG_OUTPUTS + 9));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, Pulses::GATE_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos2), module, Pulses::GATE_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos3), module, Pulses::GATE_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, Pulses::GATE_OUTPUTS + 3));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos5), module, Pulses::GATE_OUTPUTS + 4));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos6), module, Pulses::GATE_OUTPUTS + 5));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos7), module, Pulses::GATE_OUTPUTS + 6));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos8), module, Pulses::GATE_OUTPUTS + 7));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos9), module, Pulses::GATE_OUTPUTS + 8));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos10), module, Pulses::GATE_OUTPUTS + 9));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, Pulses::GATE_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, Pulses::GATE_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos3), module, Pulses::GATE_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, Pulses::GATE_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos5), module, Pulses::GATE_OUTPUTS + 4));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, Pulses::GATE_OUTPUTS + 5));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos7), module, Pulses::GATE_OUTPUTS + 6));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos8), module, Pulses::GATE_OUTPUTS + 7));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos9), module, Pulses::GATE_OUTPUTS + 8));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos10), module, Pulses::GATE_OUTPUTS + 9));
 
 	}
 };

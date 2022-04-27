@@ -26,12 +26,12 @@ static const constexpr float kRACK_JACK_SIZE = 22.f;
 static const constexpr float kRACK_JACK_HALF_SIZE = kRACK_JACK_SIZE * 0.5f;
 
 template<int size>
-struct CardinalBlackKnob : RoundKnob {
+struct FundamentalBlackKnob : RoundKnob {
 	static constexpr const float kSize = size;
 	static constexpr const float kHalfSize = size * 0.5f;
 	float scale;
 
-	CardinalBlackKnob() {
+	FundamentalBlackKnob() {
 		setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob-marker.svg")));
 		bg->setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob.svg")));
 
@@ -40,7 +40,7 @@ struct CardinalBlackKnob : RoundKnob {
 		bg->box.size = Vec(size, size);
 	}
 
-	void draw(const DrawArgs& args) override{
+	void draw(const DrawArgs& args) override {
 		nvgSave(args.vg);
 		nvgScale(args.vg, scale, scale);
 		RoundKnob::draw(args);
@@ -48,8 +48,8 @@ struct CardinalBlackKnob : RoundKnob {
 	}
 };
 
-struct CardinalPort : app::SvgPort {
-	CardinalPort() {
+struct FundamentalPort : app::SvgPort {
+	FundamentalPort() {
 		setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/port.svg")));
 	}
 };
@@ -64,9 +64,9 @@ struct CardinalPort : app::SvgPort {
  * the License, or (at your option) any later version.
  */
 
-struct CardinalLightLatch : app::SvgSwitch {
-	struct Light : app::ModuleLightWidget {
-		Light() {
+struct FundamentalLightLatch : app::SvgSwitch {
+	struct LightWidget : app::ModuleLightWidget {
+		LightWidget() {
 			box.size = mm2px(math::Vec(3, 3));
 			bgColor = nvgRGBA(190, 152, 152, 53);
 			borderColor = nvgRGBA(241, 33, 33, 53);
@@ -74,14 +74,14 @@ struct CardinalLightLatch : app::SvgSwitch {
 		}
 	}* light;
 
-	CardinalLightLatch() {
+	FundamentalLightLatch() {
 		momentary = false;
 		latch = true;
 
 		addFrame(Svg::load(asset::plugin(pluginInstance, "res/components/button-off.svg")));
 		addFrame(Svg::load(asset::plugin(pluginInstance, "res/components/button-on.svg")));
 
-		light = new Light;
+		light = new LightWidget;
 		// Move center of light to center of box
 		light->box.pos = box.size.div(2).minus(light->box.size.div(2));
 		addChild(light);

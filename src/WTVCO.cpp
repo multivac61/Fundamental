@@ -267,8 +267,8 @@ struct WTVCO : Module {
 
 
 struct WTVCOWidget : ModuleWidget {
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 7;
 	static constexpr const float kBorderPadding = 5.f;
@@ -294,8 +294,8 @@ struct WTVCOWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos1), module, WTVCO::PITCH_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos1), module, WTVCO::SYNC_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos1), module, WTVCO::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos1), module, WTVCO::SYNC_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kVerticalPos2), module, WTVCO::FREQ_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kVerticalPos2), module, WTVCO::POS_PARAM));
@@ -303,13 +303,13 @@ struct WTVCOWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kVerticalPos3), module, WTVCO::FM_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kVerticalPos3), module, WTVCO::POS_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos4), module, WTVCO::FM_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos4), module, WTVCO::POS_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, WTVCO::FM_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, WTVCO::POS_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, WTVCO::LINEAR_PARAM, WTVCO::LINEAR_LIGHT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosRight, kVerticalPos5), module, WTVCO::SOFT_PARAM, WTVCO::SOFT_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, WTVCO::LINEAR_PARAM, WTVCO::LINEAR_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosRight, kVerticalPos5), module, WTVCO::SOFT_PARAM, WTVCO::SOFT_LIGHT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosCenter, kVerticalPos6), module, WTVCO::WAVE_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos6), module, WTVCO::WAVE_OUTPUT));
 
 		WTDisplay<WTVCO>* display = createWidgetCentered<WTDisplay<WTVCO>>(Vec(kPosCenter, kVerticalPos4+kRACK_JACK_SIZE*1.25f));
 		display->module = module;

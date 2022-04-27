@@ -88,7 +88,7 @@ struct MidSide : Module {
 
 
 struct MidSideWidget : ModuleWidget {
-	typedef CardinalBlackKnob<40> Knob;
+	typedef FundamentalBlackKnob<40> Knob;
 
 	static constexpr const int kWidth = 5;
 	static constexpr const float kBorderPadding = 5.f;
@@ -115,22 +115,22 @@ struct MidSideWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
 		addParam(createParamCentered<Knob>(Vec(kPosLeft + kBigKnobOffset * 0.5f, kVerticalPos1), module, MidSide::ENC_WIDTH_PARAM));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight + kBigKnobOffset * 1.5f, kVerticalPos1), module, MidSide::ENC_WIDTH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight + kBigKnobOffset * 1.5f, kVerticalPos1), module, MidSide::ENC_WIDTH_INPUT));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos2), module, MidSide::ENC_LEFT_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos2), module, MidSide::ENC_RIGHT_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, MidSide::ENC_LEFT_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, MidSide::ENC_RIGHT_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos3), module, MidSide::ENC_MID_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos3), module, MidSide::ENC_SIDES_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos3), module, MidSide::ENC_MID_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos3), module, MidSide::ENC_SIDES_OUTPUT));
 
 		addParam(createParamCentered<Knob>(Vec(kPosLeft + kBigKnobOffset * 0.5f, kVerticalPos4), module, MidSide::DEC_WIDTH_PARAM));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight + kBigKnobOffset * 1.5f, kVerticalPos4), module, MidSide::DEC_WIDTH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight + kBigKnobOffset * 1.5f, kVerticalPos4), module, MidSide::DEC_WIDTH_INPUT));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos5), module, MidSide::DEC_MID_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos5), module, MidSide::DEC_SIDES_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos5), module, MidSide::DEC_MID_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos5), module, MidSide::DEC_SIDES_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kVerticalPos6), module, MidSide::DEC_LEFT_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kVerticalPos6), module, MidSide::DEC_RIGHT_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, MidSide::DEC_LEFT_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, MidSide::DEC_RIGHT_OUTPUT));
 	}
 };
 

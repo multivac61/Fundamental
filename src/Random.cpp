@@ -247,8 +247,8 @@ struct Random : Module {
 
 
 struct RandomWidget : ModuleWidget {
-	typedef CardinalBlackKnob<30> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<30> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 9;
 	static constexpr const float kBorderPadding = 5.f;
@@ -278,9 +278,9 @@ struct RandomWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos1), module, Random::TRIG_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, Random::EXTERNAL_INPUT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, Random::OFFSET_PARAM, Random::OFFSET_LIGHT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos1), module, Random::TRIG_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, Random::EXTERNAL_INPUT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, Random::OFFSET_PARAM, Random::OFFSET_LIGHT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos2), module, Random::RATE_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos2of3, kVerticalPos2), module, Random::RAND_PARAM));
@@ -290,20 +290,20 @@ struct RandomWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos3), module, Random::RAND_CV_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3of3, kVerticalPos3), module, Random::SHAPE_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos4), module, Random::RATE_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos4), module, Random::RAND_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos4), module, Random::SHAPE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos4), module, Random::RATE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of3, kVerticalPos4), module, Random::RAND_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3of3, kVerticalPos4), module, Random::SHAPE_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of3, kVerticalPos5), module, Random::PROB_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2of3, kVerticalPos5), module, Random::PROB_CV_PARAM));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos5), module, Random::PROB_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3of3, kVerticalPos5), module, Random::PROB_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos6), module, Random::STEPPED_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos6), module, Random::LINEAR_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos6), module, Random::EXPONENTIAL_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos6), module, Random::STEPPED_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2of3, kVerticalPos6), module, Random::LINEAR_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos3of3, kVerticalPos6), module, Random::EXPONENTIAL_OUTPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1of2, kVerticalPos7), module, Random::SMOOTH_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2of2, kVerticalPos7), module, Random::TRIG_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1of2, kVerticalPos7), module, Random::SMOOTH_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2of2, kVerticalPos7), module, Random::TRIG_OUTPUT));
 	}
 };
 

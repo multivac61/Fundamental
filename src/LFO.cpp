@@ -221,8 +221,8 @@ struct LFOWidget : ModuleWidget {
 	static constexpr const float kHorizontalPos1of2 = kBorderPadding + kUsableWidth * 0.25f;
 	static constexpr const float kHorizontalPos2of2 = kBorderPadding + kUsableWidth * 0.75f;
 
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 272.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 242.5f - SmallKnob::kHalfSize;
@@ -246,19 +246,19 @@ struct LFOWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos1of3, kVerticalPos2), module, LFO::FM_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3of3, kVerticalPos2), module, LFO::PWM_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos3), module, LFO::FM_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of3, kVerticalPos3), module, LFO::PW_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos3), module, LFO::FM_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3of3, kVerticalPos3), module, LFO::PW_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos2of3, kRACK_GRID_HEIGHT - 233.f), module, LFO::INVERT_PARAM, LFO::INVERT_LIGHT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos2of3, kRACK_GRID_HEIGHT - 189.f), module, LFO::OFFSET_PARAM, LFO::OFFSET_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos2of3, kRACK_GRID_HEIGHT - 233.f), module, LFO::INVERT_PARAM, LFO::INVERT_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos2of3, kRACK_GRID_HEIGHT - 189.f), module, LFO::OFFSET_PARAM, LFO::OFFSET_LIGHT));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of2, kVerticalPos4), module, LFO::CLOCK_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of2, kVerticalPos4), module, LFO::RESET_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of2, kVerticalPos4), module, LFO::CLOCK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of2, kVerticalPos4), module, LFO::RESET_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1of2, kVerticalPos5), module, LFO::SIN_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2of2, kVerticalPos5), module, LFO::TRI_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1of2, kVerticalPos6), module, LFO::SAW_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2of2, kVerticalPos6), module, LFO::SQR_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1of2, kVerticalPos5), module, LFO::SIN_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2of2, kVerticalPos5), module, LFO::TRI_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1of2, kVerticalPos6), module, LFO::SAW_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2of2, kVerticalPos6), module, LFO::SQR_OUTPUT));
 	}
 };
 

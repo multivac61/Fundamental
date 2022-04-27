@@ -254,8 +254,8 @@ struct ADSRDisplay : Widget {
 
 
 struct ADSRWidget : ModuleWidget {
-	typedef CardinalBlackKnob<28> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<28> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 9;
 	static constexpr const float kBorderPadding = 5.f;
@@ -286,9 +286,9 @@ struct ADSRWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of3, kVerticalPos1), module, ADSR::GATE_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, ADSR::RETRIG_INPUT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, ADSR::PUSH_PARAM, ADSR::PUSH_LIGHT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos1), module, ADSR::GATE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, ADSR::RETRIG_INPUT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, ADSR::PUSH_PARAM, ADSR::PUSH_LIGHT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of4, kVerticalPos2), module, ADSR::ATTACK_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos2of4, kVerticalPos2), module, ADSR::DECAY_PARAM));
@@ -300,12 +300,12 @@ struct ADSRWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3of4, kVerticalPos3), module, ADSR::SUSTAIN_CV_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos4of4, kVerticalPos3), module, ADSR::RELEASE_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos1of4, kVerticalPos4), module, ADSR::ATTACK_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos2of4, kVerticalPos4), module, ADSR::DECAY_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos3of4, kVerticalPos4), module, ADSR::SUSTAIN_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalPos4of4, kVerticalPos4), module, ADSR::RELEASE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of4, kVerticalPos4), module, ADSR::ATTACK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of4, kVerticalPos4), module, ADSR::DECAY_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3of4, kVerticalPos4), module, ADSR::SUSTAIN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos4of4, kVerticalPos4), module, ADSR::RELEASE_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, ADSR::ENVELOPE_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, ADSR::ENVELOPE_OUTPUT));
 
 		ADSRDisplay* display = createWidget<ADSRDisplay>(Vec(5.75f, kRACK_GRID_HEIGHT - 304.f));
 		display->module = module;

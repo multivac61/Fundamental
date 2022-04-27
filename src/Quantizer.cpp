@@ -233,7 +233,7 @@ struct QuantizerDisplay : LedDisplay {
 
 
 struct QuantizerWidget : ModuleWidget {
-	typedef CardinalBlackKnob<30> Knob;
+	typedef FundamentalBlackKnob<30> Knob;
 
 	static constexpr const int kWidth = 3;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
@@ -249,11 +249,11 @@ struct QuantizerWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Quantizer::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Quantizer::PITCH_INPUT));
 
 		addParam(createParamCentered<Knob>(Vec(kHorizontalCenter, kVerticalPos2), module, Quantizer::OFFSET_PARAM));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Quantizer::PITCH_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Quantizer::PITCH_OUTPUT));
 
 		/* TODO
 		QuantizerDisplay* quantizerDisplay = createWidget<QuantizerDisplay>(Vec(0.0, 13.039)));

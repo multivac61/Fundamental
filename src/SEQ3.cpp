@@ -281,9 +281,9 @@ struct SEQ3 : Module {
 
 
 struct SEQ3Widget : ModuleWidget {
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<27> MediumKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<27> MediumKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 22;
 	static constexpr const float kBorderPadding = 11.f;
@@ -320,27 +320,27 @@ struct SEQ3Widget : ModuleWidget {
 
 		addParam(createParamCentered<BigKnob>(Vec(38.5f, kVerticalPos1), module, SEQ3::TEMPO_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(77.5f, kVerticalPos1a), module, SEQ3::TEMPO_CV_PARAM));
-		addInput(createInputCentered<CardinalPort>(Vec(77.5f, kVerticalPos1b), module, SEQ3::TEMPO_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(77.5f, kVerticalPos1b), module, SEQ3::TEMPO_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(128.5f, kVerticalPos1), module, SEQ3::TRIG_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(165.5f, kVerticalPos1a), module, SEQ3::STEPS_CV_PARAM));
-		addInput(createInputCentered<CardinalPort>(Vec(165.5f, kVerticalPos1b), module, SEQ3::STEPS_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(165.5f, kVerticalPos1b), module, SEQ3::STEPS_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(264.5f, kVerticalPos1a), module, SEQ3::RUN_PARAM, SEQ3::RUN_LIGHT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(300.5f, kVerticalPos1a), module, SEQ3::RESET_PARAM, SEQ3::RESET_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(264.5f, kVerticalPos1a), module, SEQ3::RUN_PARAM, SEQ3::RUN_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(300.5f, kVerticalPos1a), module, SEQ3::RESET_PARAM, SEQ3::RESET_LIGHT));
 
-		addInput(createInputCentered<CardinalPort>(Vec(228.5f, kVerticalPos1b), module, SEQ3::CLOCK_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(264.5f, kVerticalPos1b), module, SEQ3::RUN_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(300.5f, kVerticalPos1b), module, SEQ3::RESET_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(228.5f, kVerticalPos1b), module, SEQ3::CLOCK_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(264.5f, kVerticalPos1b), module, SEQ3::RUN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(300.5f, kVerticalPos1b), module, SEQ3::RESET_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos1, kVerticalPos2), module, SEQ3::GATE_PARAMS + 0, SEQ3::GATE_LIGHTS + 0));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos2, kVerticalPos2), module, SEQ3::GATE_PARAMS + 1, SEQ3::GATE_LIGHTS + 1));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos3, kVerticalPos2), module, SEQ3::GATE_PARAMS + 2, SEQ3::GATE_LIGHTS + 2));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos4, kVerticalPos2), module, SEQ3::GATE_PARAMS + 3, SEQ3::GATE_LIGHTS + 3));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos5, kVerticalPos2), module, SEQ3::GATE_PARAMS + 4, SEQ3::GATE_LIGHTS + 4));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos6, kVerticalPos2), module, SEQ3::GATE_PARAMS + 5, SEQ3::GATE_LIGHTS + 5));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos7, kVerticalPos2), module, SEQ3::GATE_PARAMS + 6, SEQ3::GATE_LIGHTS + 6));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kHorizontalPos8, kVerticalPos2), module, SEQ3::GATE_PARAMS + 7, SEQ3::GATE_LIGHTS + 7));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos1, kVerticalPos2), module, SEQ3::GATE_PARAMS + 0, SEQ3::GATE_LIGHTS + 0));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos2, kVerticalPos2), module, SEQ3::GATE_PARAMS + 1, SEQ3::GATE_LIGHTS + 1));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos3, kVerticalPos2), module, SEQ3::GATE_PARAMS + 2, SEQ3::GATE_LIGHTS + 2));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos4, kVerticalPos2), module, SEQ3::GATE_PARAMS + 3, SEQ3::GATE_LIGHTS + 3));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos5, kVerticalPos2), module, SEQ3::GATE_PARAMS + 4, SEQ3::GATE_LIGHTS + 4));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos6, kVerticalPos2), module, SEQ3::GATE_PARAMS + 5, SEQ3::GATE_LIGHTS + 5));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos7, kVerticalPos2), module, SEQ3::GATE_PARAMS + 6, SEQ3::GATE_LIGHTS + 6));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos8, kVerticalPos2), module, SEQ3::GATE_PARAMS + 7, SEQ3::GATE_LIGHTS + 7));
 
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos1, kVerticalPos3), module, SEQ3::CV_PARAMS + 8 * 0 + 0));
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos2, kVerticalPos3), module, SEQ3::CV_PARAMS + 8 * 0 + 1));
@@ -369,23 +369,23 @@ struct SEQ3Widget : ModuleWidget {
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos7, kVerticalPos5), module, SEQ3::CV_PARAMS + 8 * 2 + 6));
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos8, kVerticalPos5), module, SEQ3::CV_PARAMS + 8 * 2 + 7));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos3, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 2));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos4, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 3));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos5, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 4));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos6, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 5));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos7, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 6));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos8, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 7));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 3));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos5, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 4));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos6, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 5));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos7, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 6));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos8, kVerticalPos6), module, SEQ3::STEP_OUTPUTS + 7));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos1, kVerticalPos7), module, SEQ3::STEPS_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos2, kVerticalPos7), module, SEQ3::CLOCK_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos3, kVerticalPos7), module, SEQ3::RUN_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos4, kVerticalPos7), module, SEQ3::RESET_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos5, kVerticalPos7), module, SEQ3::TRIG_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos6, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 0));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos7, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 1));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kHorizontalPos8, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 2));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos7), module, SEQ3::STEPS_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos7), module, SEQ3::CLOCK_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos7), module, SEQ3::RUN_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos7), module, SEQ3::RESET_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos5, kVerticalPos7), module, SEQ3::TRIG_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos6, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 0));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos7, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 1));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalPos8, kVerticalPos7), module, SEQ3::CV_OUTPUTS + 2));
 	}
 
 	void appendContextMenu(Menu* menu) override {

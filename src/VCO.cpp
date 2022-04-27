@@ -375,8 +375,8 @@ struct VCOWidget : ModuleWidget {
 	static constexpr const float kPosCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.75f;
 
-	typedef CardinalBlackKnob<40> BigKnob;
-	typedef CardinalBlackKnob<18> SmallKnob;
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	VCOWidget(VCO* module) {
 		setModule(module);
@@ -387,7 +387,7 @@ struct VCOWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 308.5f - 11.f), module, VCO::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 308.5f - 11.f), module, VCO::PITCH_INPUT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 252.f - BigKnob::kHalfSize), module, VCO::FREQ_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kRACK_GRID_HEIGHT - 252.f - BigKnob::kHalfSize), module, VCO::PW_PARAM));
@@ -395,17 +395,17 @@ struct VCOWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 222.f - SmallKnob::kHalfSize), module, VCO::FM_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kRACK_GRID_HEIGHT - 222.f - SmallKnob::kHalfSize), module, VCO::PW_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 181.5f - 11.f), module, VCO::FM_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 181.5f - 11.f), module, VCO::PW_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 181.5f - 11.f), module, VCO::FM_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 181.5f - 11.f), module, VCO::PW_INPUT));
 
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 149.f), module, VCO::LINEAR_PARAM, VCO::LINEAR_LIGHT));
-		addParam(createLightParamCentered<CardinalLightLatch>(Vec(kPosRight - 14.f, kRACK_GRID_HEIGHT - 149.f), module, VCO::SYNC_PARAM, VCO::SOFT_LIGHT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight + 14.f, kRACK_GRID_HEIGHT - 149.f), module, VCO::SYNC_INPUT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 149.f), module, VCO::LINEAR_PARAM, VCO::LINEAR_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosRight - 14.f, kRACK_GRID_HEIGHT - 149.f), module, VCO::SYNC_PARAM, VCO::SOFT_LIGHT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight + 14.f, kRACK_GRID_HEIGHT - 149.f), module, VCO::SYNC_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCO::SIN_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCO::TRI_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 26.f - 11.f), module, VCO::SAW_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 26.f - 11.f), module, VCO::SQR_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCO::SIN_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCO::TRI_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosLeft, kRACK_GRID_HEIGHT - 26.f - 11.f), module, VCO::SAW_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosRight, kRACK_GRID_HEIGHT - 26.f - 11.f), module, VCO::SQR_OUTPUT));
 	}
 };
 

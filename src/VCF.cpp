@@ -226,8 +226,8 @@ struct VCFWidget : ModuleWidget {
 	static constexpr const float kPosCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 	static constexpr const float kPosRight = 78.5f;
 
-	typedef CardinalBlackKnob<42> BigKnob;
-	typedef CardinalBlackKnob<20> SmallKnob;
+	typedef FundamentalBlackKnob<42> BigKnob;
+	typedef FundamentalBlackKnob<20> SmallKnob;
 
 	VCFWidget(VCF* module) {
 		setModule(module);
@@ -246,13 +246,13 @@ struct VCFWidget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, RACK_GRID_HEIGHT - 227.432 + 0.707/2), module, VCF::RES_CV_PARAM));
 		addParam(createParamCentered<SmallKnob>(Vec(kPosCenter, RACK_GRID_HEIGHT - 115.930 + 0.707/2), module, VCF::DRIVE_CV_PARAM));
 
-		addInput(createInputCentered<CardinalPort>(Vec(kPosLeft, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::FREQ_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosRight, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::RES_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosCenter, RACK_GRID_HEIGHT - 73.769 - kRACK_JACK_HALF_SIZE), module, VCF::DRIVE_INPUT));
-		addInput(createInputCentered<CardinalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 309.f - kRACK_JACK_HALF_SIZE + 5 /* FIXME */), module, VCF::IN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::FREQ_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::RES_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, RACK_GRID_HEIGHT - 73.769 - kRACK_JACK_HALF_SIZE), module, VCF::DRIVE_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 309.f - kRACK_JACK_HALF_SIZE + 5 /* FIXME */), module, VCF::IN_INPUT));
 
-		addOutput(createOutputCentered<CardinalPort>(Vec(12.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::LPF_OUTPUT));
-		addOutput(createOutputCentered<CardinalPort>(Vec(56.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::HPF_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(12.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::LPF_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(56.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::HPF_OUTPUT));
 	}
 };
 

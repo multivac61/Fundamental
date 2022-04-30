@@ -221,13 +221,22 @@ struct VCF : Module {
 };
 
 struct VCFWidget : ModuleWidget {
+	typedef FundamentalBlackKnob<40> BigKnob;
+	typedef FundamentalBlackKnob<14> SmallKnob;
+
 	static constexpr const int kWidth = 7;
 	static constexpr const float kPosLeft = 25.5f;
 	static constexpr const float kPosCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 	static constexpr const float kPosRight = 78.5f;
 
-	typedef FundamentalBlackKnob<42> BigKnob;
-	typedef FundamentalBlackKnob<20> SmallKnob;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 310.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 250.f - BigKnob::kHalfSize;
+	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 220.f - SmallKnob::kHalfSize;
+	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 190.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 131.f - BigKnob::kHalfSize;
+	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 108.f - SmallKnob::kHalfSize;
+	static constexpr const float kVerticalPos7 = kRACK_GRID_HEIGHT - 77.5f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos8 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 
 	VCFWidget(VCF* module) {
 		setModule(module);
@@ -238,21 +247,23 @@ struct VCFWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, RACK_GRID_HEIGHT - 292.81 + 5.926 + BigKnob::kHalfSize), module, VCF::FREQ_PARAM));
-		addParam(createParamCentered<BigKnob>(Vec(kPosRight, RACK_GRID_HEIGHT - 292.81 + 5.926 + BigKnob::kHalfSize), module, VCF::RES_PARAM));
-		addParam(createParamCentered<BigKnob>(Vec(kPosCenter, RACK_GRID_HEIGHT - 176.76 + 5.727 + BigKnob::kHalfSize), module, VCF::DRIVE_PARAM));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, VCF::IN_INPUT));
 
-		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, RACK_GRID_HEIGHT - 227.432 + 0.707/2), module, VCF::FREQ_CV_PARAM));
-		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, RACK_GRID_HEIGHT - 227.432 + 0.707/2), module, VCF::RES_CV_PARAM));
-		addParam(createParamCentered<SmallKnob>(Vec(kPosCenter, RACK_GRID_HEIGHT - 115.930 + 0.707/2), module, VCF::DRIVE_CV_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kPosLeft, kVerticalPos2), module, VCF::FREQ_PARAM));
+		addParam(createParamCentered<BigKnob>(Vec(kPosRight, kVerticalPos2), module, VCF::RES_PARAM));
 
-		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::FREQ_INPUT));
-		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, RACK_GRID_HEIGHT - 185.063 - kRACK_JACK_HALF_SIZE), module, VCF::RES_INPUT));
-		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, RACK_GRID_HEIGHT - 73.769 - kRACK_JACK_HALF_SIZE), module, VCF::DRIVE_INPUT));
-		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kRACK_GRID_HEIGHT - 309.f - kRACK_JACK_HALF_SIZE + 5 /* FIXME */), module, VCF::IN_INPUT));
+		addParam(createParamCentered<SmallKnob>(Vec(kPosLeft, kVerticalPos3), module, VCF::FREQ_CV_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kPosRight, kVerticalPos3), module, VCF::RES_CV_PARAM));
 
-		addOutput(createOutputCentered<FundamentalPort>(Vec(12.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::LPF_OUTPUT));
-		addOutput(createOutputCentered<FundamentalPort>(Vec(56.5f + 18.f, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, VCF::HPF_OUTPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos4), module, VCF::FREQ_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos4), module, VCF::RES_INPUT));
+
+		addParam(createParamCentered<BigKnob>(Vec(kPosCenter, kVerticalPos5), module, VCF::DRIVE_PARAM));
+		addParam(createParamCentered<SmallKnob>(Vec(kPosCenter, kVerticalPos6), module, VCF::DRIVE_CV_PARAM));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos7), module, VCF::DRIVE_INPUT));
+
+		addOutput(createOutputCentered<FundamentalPort>(Vec(12.5f + 18.f, kVerticalPos8), module, VCF::LPF_OUTPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(56.5f + 18.f, kVerticalPos8), module, VCF::HPF_OUTPUT));
 	}
 };
 

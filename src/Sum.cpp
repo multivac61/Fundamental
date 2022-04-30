@@ -1,6 +1,31 @@
 #include "components.hpp"
 
 
+static inline
+float findMaxNormalizedFloat10(const float floats[], const std::size_t count)
+{
+	static constexpr const float kEmptyFloats[128] = {};
+
+	if (std::memcmp(floats, kEmptyFloats, count) == 0)
+		return 0.f;
+
+	float tmp, maxf2 = std::abs(floats[0]);
+
+	for (std::size_t i=1; i<count; ++i)
+	{
+		tmp = std::abs(*floats++);
+
+		if (tmp > maxf2)
+			maxf2 = tmp;
+	}
+
+	if (maxf2 > 10.f)
+		maxf2 = 10.f;
+
+	return maxf2;
+}
+
+
 struct Sum : Module {
 	enum ParamIds {
 		LEVEL_PARAM,
@@ -19,93 +44,120 @@ struct Sum : Module {
 		NUM_LIGHTS
 	};
 
-	dsp::VuMeter2 vuMeter;
-	dsp::ClockDivider vuDivider;
-	dsp::ClockDivider lightDivider;
 	int lastChannels = 0;
+
+	uint32_t internalDataFrame = 0;
+	float internalDataBuffer[128];
+	volatile bool resetMeters = true;
+	float levelMeter = 0.0f;
 
 	Sum() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 		configParam(LEVEL_PARAM, 0.f, 1.f, 1.f, "Level", "%", 0.f, 100.f);
 		configInput(POLY_INPUT, "Polyphonic");
 		configOutput(MONO_OUTPUT, "Monophonic");
-
-		vuMeter.lambda = 1 / 0.1f;
-		vuDivider.setDivision(16);
-		lightDivider.setDivision(512);
 	}
 
 	void process(const ProcessArgs& args) override {
 		float sum = inputs[POLY_INPUT].getVoltageSum();
 		sum *= params[LEVEL_PARAM].getValue();
 		outputs[MONO_OUTPUT].setVoltage(sum);
+		lastChannels = inputs[POLY_INPUT].getChannels();
 
-		if (vuDivider.process()) {
-			vuMeter.process(args.sampleTime * vuDivider.getDivision(), sum / 10.f);
+		const uint32_t j = internalDataFrame++;
+		internalDataBuffer[j] = sum;
+
+		if (internalDataFrame == 128)
+		{
+			internalDataFrame = 0;
+
+			if (resetMeters)
+				levelMeter = 0.0f;
+
+			levelMeter = std::max(levelMeter, findMaxNormalizedFloat10(internalDataBuffer, 128));
+			resetMeters = false;
 		}
+	}
 
-		// Set channel lights infrequently
-		if (lightDivider.process()) {
-			lastChannels = inputs[POLY_INPUT].getChannels();
+	void onReset() override
+	{
+		resetMeters = true;
+	}
 
-			lights[VU_LIGHTS + 0].setBrightness(vuMeter.getBrightness(0, 0));
-			lights[VU_LIGHTS + 1].setBrightness(vuMeter.getBrightness(-3, 0));
-			lights[VU_LIGHTS + 2].setBrightness(vuMeter.getBrightness(-6, -3));
-			lights[VU_LIGHTS + 3].setBrightness(vuMeter.getBrightness(-12, -6));
-			lights[VU_LIGHTS + 4].setBrightness(vuMeter.getBrightness(-24, -12));
-			lights[VU_LIGHTS + 5].setBrightness(vuMeter.getBrightness(-36, -24));
-		}
+	void onSampleRateChange(const SampleRateChangeEvent& e) override
+	{
+		resetMeters = true;
 	}
 };
 
 
-struct SumDisplay : LedDisplay {
+struct FundamentalNanoMeter : Widget {
+	Sum* module;
+	float levelMeter = 0.0f;
+
+	void updateMeters()
+	{
+		if (module == nullptr || module->resetMeters)
+			return;
+
+		// Only fetch new values once DSP side is updated
+		levelMeter = module->levelMeter;
+		module->resetMeters = true;
+	}
+	void drawLayer(const DrawArgs& args, int layer) override
+	{
+		if (layer != 1)
+			return;
+
+		const float usableHeight = box.size.y;
+
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg,
+				0,
+				0,
+				box.size.x,
+				usableHeight);
+		nvgFillColor(args.vg, nvgRGB(26, 26, 26));
+		nvgFill(args.vg);
+
+		nvgFillColor(args.vg, nvgRGBAf(0.76f, 0.11f, 0.22f, 0.5f));
+		nvgStrokeColor(args.vg, nvgRGBf(0.76f, 0.11f, 0.22f));
+
+		updateMeters();
+
+		const float height = 1.0f + std::sqrt(levelMeter * 0.1f) * (usableHeight - 1.0f);
+		nvgBeginPath(args.vg);
+		nvgRect(args.vg, 1.0f, usableHeight - height, box.size.x - 2.0f, height);
+		nvgFill(args.vg);
+		nvgStroke(args.vg);
+	}
+};
+
+
+struct SumChannelDisplay : Widget {
+	std::string fontPath = asset::system("res/fonts/DSEG7ClassicMini-BoldItalic.ttf");
+	std::string text = "00";
 	Sum* module;
 
 	void drawLayer(const DrawArgs& args, int layer) override {
 		if (layer == 1) {
-			static const std::vector<float> posY = {
-				mm2px(18.068 - 13.039),
-				mm2px(23.366 - 13.039),
-				mm2px(28.663 - 13.039),
-				mm2px(33.961 - 13.039),
-				mm2px(39.258 - 13.039),
-				mm2px(44.556 - 13.039),
-			};
-			static const std::vector<std::string> texts = {
-				" 0", "-3", "-6", "-12", "-24", "-36",
-			};
-
-			std::string fontPath = asset::system("res/fonts/Nunito-Bold.ttf");
 			std::shared_ptr<Font> font = APP->window->loadFont(fontPath);
-			if (!font)
-				return;
 
-			nvgSave(args.vg);
+			nvgRect(args.vg, 0.f, 0.f, box.size.x, box.size.y);
 			nvgFontFaceId(args.vg, font->handle);
-			nvgFontSize(args.vg, 11);
+			nvgFontSize(args.vg, 16);
 			nvgTextLetterSpacing(args.vg, 0.0);
-			nvgTextAlign(args.vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-			nvgFillColor(args.vg, nvgRGB(99, 99, 99));
-
-			for (int i = 0; i < 6; i++) {
-				nvgText(args.vg, 15.0, posY[i], texts[i].c_str(), NULL);
-			}
-			nvgRestore(args.vg);
+			nvgTextAlign(args.vg, NVG_ALIGN_RIGHT);
+			nvgFillColor(args.vg, nvgRGBf(0.76f, 0.11f, 0.22f));
+			nvgText(args.vg, box.size.x*0.8666f, 34.f, text.c_str(), nullptr);
 		}
-		LedDisplay::drawLayer(args, layer);
+
+		Widget::drawLayer(args, layer);
 	}
-};
-
-
-struct SumChannelDisplay : ChannelDisplay {
-	Sum* module;
 
 	void step() override {
-		int channels = 16;
-		if (module)
-			channels = module->lastChannels;
-		text = string::f("%d", channels);
+		const int channels = module != nullptr ? module->lastChannels : 16;
+		text = string::f("%02d", channels);
 	}
 };
 
@@ -131,24 +183,15 @@ struct SumWidget : ModuleWidget {
 		addParam(createParamCentered<Knob>(Vec(kHorizontalCenter, kVerticalPos2), module, Sum::LEVEL_PARAM));
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Sum::MONO_OUTPUT));
 
-		/* TODO
-		addChild(createLightCentered<SmallSimpleLight<RedLight>>(Vec(kHorizontalCenter, 18.081), module, Sum::VU_LIGHTS + 0));
-		addChild(createLightCentered<SmallSimpleLight<YellowLight>>(Vec(kHorizontalCenter, 23.378), module, Sum::VU_LIGHTS + 1));
-		addChild(createLightCentered<SmallSimpleLight<GreenLight>>(Vec(kHorizontalCenter, 28.676), module, Sum::VU_LIGHTS + 2));
-		addChild(createLightCentered<SmallSimpleLight<GreenLight>>(Vec(kHorizontalCenter, 33.973), module, Sum::VU_LIGHTS + 3));
-		addChild(createLightCentered<SmallSimpleLight<GreenLight>>(Vec(kHorizontalCenter, 39.271), module, Sum::VU_LIGHTS + 4));
-		addChild(createLightCentered<SmallSimpleLight<GreenLight>>(Vec(kHorizontalCenter, 44.568), module, Sum::VU_LIGHTS + 5));
-
-		SumDisplay* display = createWidget<SumDisplay>(Vec(0.0, 13.039));
-		display->box.size = Vec(15.241, 36.981);
+		FundamentalNanoMeter* display = createWidget<FundamentalNanoMeter>(Vec(9.f, kRACK_GRID_HEIGHT - 124.f - 130.f));
+		display->box.size = Vec(27.f, 130.f);
 		display->module = module;
 		addChild(display);
 
-		SumChannelDisplay* channelDisplay = createWidget<SumChannelDisplay>(Vec(3.521, 77.191));
-		channelDisplay->box.size = Vec(8.197, 8.197);
+		SumChannelDisplay* channelDisplay = createWidget<SumChannelDisplay>(Vec(4.5f, kRACK_GRID_HEIGHT - 261.f - 40.f));
+		channelDisplay->box.size = Vec(36.f, 130.f);
 		channelDisplay->module = module;
 		addChild(channelDisplay);
-		*/
 	}
 };
 

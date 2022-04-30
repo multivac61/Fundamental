@@ -40,12 +40,12 @@
      id="namedview216"
      showgrid="false"
      inkscape:zoom="2.4842105"
-     inkscape:cx="-10.438159"
-     inkscape:cy="72.990239"
+     inkscape:cx="-97.789855"
+     inkscape:cy="282.31228"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g968"
+     inkscape:current-layer="svg214"
      inkscape:pagecheckerboard="0" />
   <defs
      id="defs7">
@@ -513,7 +513,8 @@
   <g
      aria-label="V/OCT"
      id="text14110-5-6-7-9-6-1"
-     style="font-size:8px;line-height:1.25;fill:#929090">
+     style="font-size:8px;line-height:1.25;fill:#929090"
+     transform="translate(0,1.902032)">
     <path
        d="M 57.59375,45.113312 55.375,39.386749 h 0.820312 l 1.488282,4.160157 q 0.179687,0.5 0.300781,0.9375 0.132812,-0.46875 0.308594,-0.9375 l 1.546875,-4.160157 h 0.773437 l -2.242187,5.726563 z"
        style="font-family:Arial;-inkscape-font-specification:Arial"
@@ -550,7 +551,7 @@
        height="40"
        width="36"
        id="rect25890-0"
-       style="fill:#d0d0d0;fill-opacity:0.75294119" />
+       style="fill:#d0d0d0;fill-opacity:0.75294118" />
     <g
        style="font-size:8px;line-height:1.25;fill:#000000;fill-opacity:1"
        id="text14110-5-6-8"

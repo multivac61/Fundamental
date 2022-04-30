@@ -229,7 +229,7 @@ struct VCFWidget : ModuleWidget {
 	static constexpr const float kPosCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 	static constexpr const float kPosRight = 78.5f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 310.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 250.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 220.f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 190.f - kRACK_JACK_HALF_SIZE;

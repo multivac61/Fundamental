@@ -261,7 +261,7 @@ struct RandomWidget : ModuleWidget {
 	static constexpr const float kHorizontalPos1of2 = kBorderPadding + kUsableWidth * 0.333f;
 	static constexpr const float kHorizontalPos2of2 = kBorderPadding + kUsableWidth * 0.666f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 309.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 248.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 220.5f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 192.f - kRACK_JACK_HALF_SIZE;

@@ -136,6 +136,10 @@ struct VCA_1Widget : ModuleWidget {
 	static constexpr const int kWidth = 3;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 80.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
+
 	VCA_1Widget(VCA_1* module) {
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/VCA-1.svg")));
@@ -145,9 +149,9 @@ struct VCA_1Widget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 307.f - 11.f), module, VCA_1::IN_INPUT));
-		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 80.f - 11.f), module, VCA_1::CV_INPUT));
-		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 25.f - 11.f), module, VCA_1::OUT_OUTPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, VCA_1::IN_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, VCA_1::CV_INPUT));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, VCA_1::OUT_OUTPUT));
 
 		VCA_1VUKnob* knob = createParam<VCA_1VUKnob>(Vec(6.5f, kRACK_GRID_HEIGHT - 120.f - 176.f), module, VCA_1::LEVEL_PARAM);
 		knob->box.size = Vec(32.f, 176.f);

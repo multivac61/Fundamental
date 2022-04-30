@@ -40,8 +40,8 @@
      id="namedview96"
      showgrid="false"
      inkscape:zoom="4.968421"
-     inkscape:cx="0.20498853"
-     inkscape:cy="39.163885"
+     inkscape:cx="0.40625972"
+     inkscape:cy="321.74863"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -352,12 +352,12 @@
      width="35.841312"
      height="1"
      x="4.5793438"
-     y="34.98822" />
+     y="33.588001" />
   <g
      aria-label="4-1"
      id="text14110-1-2-2-9-8-6"
      style="font-size:13.33329964px;line-height:1.25;fill:#929090"
-     transform="translate(1.8434985)">
+     transform="translate(1.8434985,-3.205661)">
     <path
        d="M 16.470315,29.849661 V 27.56451 H 12.3297 v -1.074216 l 4.355458,-6.18488 h 0.957029 v 6.18488 h 1.289059 v 1.074216 h -1.289059 v 2.285151 z m 0,-3.359367 V 22.18692 l -2.988274,4.303374 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"

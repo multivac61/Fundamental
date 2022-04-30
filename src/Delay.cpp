@@ -209,7 +209,7 @@ struct DelayWidget : ModuleWidget {
 	typedef FundamentalBlackKnob<40> BigKnob;
 	typedef FundamentalBlackKnob<18> SmallKnob;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 312.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 248.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 224.5f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 197.f - kRACK_JACK_HALF_SIZE;

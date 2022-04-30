@@ -39,13 +39,13 @@
      inkscape:window-height="1026"
      id="namedview234"
      showgrid="false"
-     inkscape:zoom="1.7566021"
-     inkscape:cx="-178.46956"
-     inkscape:cy="185.58557"
+     inkscape:zoom="3.5132042"
+     inkscape:cx="98.073388"
+     inkscape:cy="206.27141"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g933"
+     inkscape:current-layer="svg232"
      inkscape:pagecheckerboard="0" />
   <defs
      id="defs7">
@@ -401,7 +401,7 @@
      aria-label="IN"
      id="text14110-5-6-7-9-6-1-4-6"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(-0.062476)">
+     transform="translate(-0.062476,3.999688)">
     <path
        d="m 33.017979,43.113312 v -5.726563 h 0.757812 v 5.726563 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -417,7 +417,7 @@
      aria-label="CLK"
      id="text14110-5-6-7-9-6-1-4-4-8"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(-1.562471)">
+     transform="translate(-1.562471,3.902032)">
     <path
        d="m 97.047272,41.105499 0.757812,0.191407 q -0.238281,0.933593 -0.859375,1.425781 -0.617187,0.488281 -1.511719,0.488281 -0.925781,0 -1.507812,-0.375 -0.578125,-0.378906 -0.882813,-1.09375 -0.300781,-0.714844 -0.300781,-1.535156 0,-0.894531 0.339844,-1.558594 0.34375,-0.667969 0.972656,-1.011719 0.632813,-0.347656 1.390625,-0.347656 0.859375,0 1.445313,0.4375 0.585937,0.4375 0.816406,1.230469 l -0.746094,0.175781 q -0.199219,-0.625 -0.578125,-0.910156 -0.378906,-0.285156 -0.953125,-0.285156 -0.660156,0 -1.105469,0.316406 -0.441406,0.316406 -0.621093,0.851562 -0.179688,0.53125 -0.179688,1.097657 0,0.730468 0.210938,1.277343 0.214843,0.542969 0.664062,0.8125 0.449219,0.269532 0.972656,0.269532 0.636719,0 1.078125,-0.367188 0.441407,-0.367187 0.597657,-1.089844 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -476,7 +476,7 @@
        height="40"
        width="36"
        id="rect25890-0-7-7-0-6"
-       style="fill:#d0d0d0;fill-opacity:0.75294119" />
+       style="fill:#d0d0d0;fill-opacity:0.75294118" />
     <g
        style="font-size:8px;line-height:1.25;fill:#000000;fill-opacity:1"
        id="text14110-5-6-8-3-7-2-5"
@@ -502,7 +502,7 @@
      aria-label="TIME"
      id="text14110-5-6-7-9-6-9"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(0.714872)">
+     transform="translate(0.714872,2)">
     <path
        d="m 28.180084,85.095909 v -5.050781 h -1.886719 v -0.675781 h 4.539063 v 0.675781 h -1.894531 v 5.050781 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -564,7 +564,7 @@
      aria-label="FDBK"
      id="text14110-5-6-7-9-6-9-8"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(-1.226536)">
+     transform="translate(-1.226536,2)">
     <path
        d="m 89.648834,85.095909 v -5.726562 h 3.863281 v 0.675781 h -3.105468 v 1.773437 h 2.6875 v 0.675782 h -2.6875 v 2.601562 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -626,7 +626,7 @@
      aria-label="MIX"
      id="text14110-5-6-7-9-6-9-8-5"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(-1.177706)">
+     transform="translate(-1.177706,2)">
     <path
        d="m 93.142975,207.09592 v -5.72657 H 94.2836 l 1.355469,4.05469 q 0.1875,0.56641 0.273437,0.84766 0.09766,-0.3125 0.304688,-0.91797 l 1.371093,-3.98438 h 1.019532 v 5.72657 H 97.87735 v -4.79297 l -1.664063,4.79297 h -0.683593 l -1.65625,-4.875 v 4.875 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -683,7 +683,7 @@
      aria-label="TONE"
      id="text14110-5-6-7-9-6-9-2"
      style="font-size:8px;line-height:1.25;fill:#929090"
-     transform="translate(0.714872)">
+     transform="translate(0.714872,2)">
     <path
        d="m 26.695709,207.09592 v -5.05078 H 24.80899 v -0.67579 h 4.539063 v 0.67579 h -1.894531 v 5.05078 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"

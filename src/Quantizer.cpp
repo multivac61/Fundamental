@@ -274,7 +274,7 @@ struct QuantizerWidget : ModuleWidget {
 	static constexpr const int kWidth = 4;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 308.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 83.f - Knob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 

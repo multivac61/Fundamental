@@ -98,12 +98,12 @@ struct MixerWidget : ModuleWidget {
 	static constexpr const int kWidth = 3;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 308.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 276.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 244.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 212.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 180.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 148.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 275.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 243.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 211.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 179.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 147.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos7 = kRACK_GRID_HEIGHT - 75.f - Knob::kHalfSize;
 	static constexpr const float kVerticalPos8 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 

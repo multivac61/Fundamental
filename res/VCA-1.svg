@@ -40,12 +40,12 @@
      id="namedview62"
      showgrid="false"
      inkscape:zoom="2.5894703"
-     inkscape:cx="-119.45063"
-     inkscape:cy="141.93998"
+     inkscape:cx="-14.023663"
+     inkscape:cy="275.94422"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g865"
+     inkscape:current-layer="svg60"
      inkscape:pagecheckerboard="0" />
   <defs
      id="defs7">
@@ -217,12 +217,12 @@
      width="36"
      height="1"
      x="4.5"
-     y="34.98822" />
+     y="33.588001" />
   <g
      aria-label="VCA"
      id="text14110-1-2-2-9-9-7"
      style="font-size:13.33329964px;line-height:1.25;fill:#929090"
-     transform="translate(0.24844065)">
+     transform="translate(0.24844065,-3.368423)">
     <path
        d="M 12.261351,29.849663 8.5634437,20.305416 h 1.367184 l 2.4804623,6.933576 q 0.299479,0.833332 0.501301,1.562496 0.221354,-0.781248 0.514322,-1.562496 l 2.578118,-6.933576 h 1.289059 l -3.736969,9.544247 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -249,7 +249,7 @@
        height="40"
        width="36"
        id="rect25890-0-7-1-28-6-0-2-9-8-2"
-       style="fill:#d0d0d0;fill-opacity:0.75294119" />
+       style="fill:#d0d0d0;fill-opacity:0.75294118" />
     <g
        style="font-size:8px;line-height:1.25;fill:#000000;fill-opacity:1"
        id="text14110-5-6-8-3-8-2-5-4-5-9-6-0"

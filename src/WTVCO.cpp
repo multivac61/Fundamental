@@ -278,7 +278,7 @@ struct WTVCOWidget : ModuleWidget {
 	static constexpr const float kPosCenter = kBorderPadding + kUsableWidth * 0.5f;
 	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.75f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 306.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 226.f - BigKnob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 196.f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 156.f - kRACK_JACK_HALF_SIZE;

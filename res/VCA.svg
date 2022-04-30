@@ -40,8 +40,8 @@
      id="namedview134"
      showgrid="false"
      inkscape:zoom="2.4842105"
-     inkscape:cx="-33.81356"
-     inkscape:cy="187.1822"
+     inkscape:cx="-20.127119"
+     inkscape:cy="250.38135"
      inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -376,7 +376,7 @@
      aria-label="VCA-2"
      id="text14110-1-2-7-9-7-7"
      style="font-size:16px;line-height:1.25;fill:#929090"
-     transform="translate(0.5507815)">
+     transform="translate(0.5507815,-2.000321)">
     <path
        d="m 18.28125,28.449009 -4.4375,-11.453125 h 1.640625 l 2.976562,8.320312 q 0.359375,1 0.601563,1.875 0.265625,-0.9375 0.617187,-1.875 l 3.09375,-8.320312 h 1.546875 l -4.484375,11.453125 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
@@ -417,15 +417,18 @@
   <g
      aria-label="IN"
      id="text14110-5-6-7-9-6-1-9-8-2-1-1"
-     style="font-size:8px;line-height:1.25;fill:#929090">
+     style="font-size:8px;line-height:1.25;fill:#929090"
+     transform="translate(0,3.999688)">
     <path
        d="m 34.201172,43.113312 v -5.726563 h 0.757812 v 5.726563 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
-       id="path10805" />
+       id="path10805"
+       inkscape:connector-curvature="0" />
     <path
        d="m 36.287109,43.113312 v -5.726563 h 0.777344 l 3.007813,4.496094 v -4.496094 h 0.726562 v 5.726563 h -0.777344 l -3.007812,-4.5 v 4.5 z"
        style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
-       id="path10807" />
+       id="path10807"
+       inkscape:connector-curvature="0" />
   </g>
   <g
      aria-label="EXP"

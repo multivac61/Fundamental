@@ -120,7 +120,7 @@ struct VCAWidget : ModuleWidget {
 	static constexpr const float kPosCenter = kBorderPadding + kUsableWidth * 0.5f;
 	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.8f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 312.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 307.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 280.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 237.f - Knob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 197.f - kRACK_JACK_HALF_SIZE;

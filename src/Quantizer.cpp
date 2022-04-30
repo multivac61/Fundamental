@@ -125,108 +125,143 @@ struct Quantizer : Module {
 };
 
 
-struct QuantizerButton : OpaqueWidget {
+struct PianoNote : OpaqueWidget {
+	bool enabled = true;
 	int note;
 	Quantizer* module;
+	float opacities[2];
+	NSVGshape* shapes[2] = {};
+	FramebufferWidget* svgFb;
 
-	void drawLayer(const DrawArgs& args, int layer) override {
-		if (layer != 1)
-			return;
+	PianoNote(Quantizer* const module, SvgPanel* const panel, const int note) {
+		this->note = note;
+		this->module = module;
+		svgFb = panel->fb;
 
-		Rect r = box.zeroPos();
-		const float margin = mm2px(1.0);
-		Rect rMargin = r.grow(Vec(margin, margin));
+		NSVGimage* const handle = panel->svg->handle;
+		char shapeid[9] = {
+			'k', 'e', 'y', '_',
+			char('0' + ((note+1)/10)),
+			char('0' + ((note+1) % 10)),
+			'-', 'x', '\0'
+		};
 
+		// find shape one by one
+		for (int i=0; i<2; ++i) {
+			shapeid[7] = char('0' + i + 1);
+			for (NSVGshape* shape = handle->shapes; shape != nullptr; shape = shape->next) {
+				if (std::strcmp(shape->id, shapeid) == 0) {
+					shapes[i] = shape;
+					opacities[i] = shape->opacity;
+					break;
+				}
+			}
+			if (shapes[i] == nullptr) {
+				break;
+			}
+		}
+	}
+
+	/* debug painting to ensure valid bounds
+	void draw(const DrawArgs& args) override {
 		nvgBeginPath(args.vg);
-		nvgRect(args.vg, RECT_ARGS(rMargin));
-		nvgFillColor(args.vg, nvgRGB(0x12, 0x12, 0x12));
+		nvgRect(args.vg, 0.f, 0.f, box.size.x, box.size.y);
+		nvgFillColor(args.vg, nvgRGB(0x12, 0xff, 0x12));
 		nvgFill(args.vg);
+	}
+	*/
 
-		nvgBeginPath(args.vg);
-		nvgRect(args.vg, RECT_ARGS(r));
-		if (module ? module->playingNotes[note] : (note == 0)) {
-			nvgFillColor(args.vg, SCHEME_YELLOW);
+	void updateEnabled() {
+		for (int i=0; i<2; ++i) {
+			if (shapes[i] == nullptr)
+				break;
+			shapes[i]->opacity = enabled ? opacities[i] : 0.f;
 		}
-		else if (module ? module->enabledNotes[note] : true) {
-			nvgFillColor(args.vg, nvgRGB(0x7f, 0x6b, 0x0a));
-		}
-		else {
-			nvgFillColor(args.vg, nvgRGB(0x40, 0x40, 0x40));
-		}
-		nvgFill(args.vg);
+		if (svgFb != nullptr)
+			svgFb->setDirty();
 	}
 
 	void onDragStart(const event::DragStart& e) override {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
 			module->enabledNotes[note] ^= true;
 			module->updateRanges();
+			updateEnabled();
 		}
 		OpaqueWidget::onDragStart(e);
 	}
 
 	void onDragEnter(const event::DragEnter& e) override {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
-			QuantizerButton* origin = dynamic_cast<QuantizerButton*>(e.origin);
-			if (origin) {
-				module->enabledNotes[note] = module->enabledNotes[origin->note];;
+			if (PianoNote* const origin = dynamic_cast<PianoNote*>(e.origin)) {
+				module->enabledNotes[note] = module->enabledNotes[origin->note];
 				module->updateRanges();
+				updateEnabled();
 			}
 		}
 		OpaqueWidget::onDragEnter(e);
 	}
+
+	void step() override {
+		if (module != nullptr && module->enabledNotes[note] != enabled) {
+			enabled = module->enabledNotes[note];
+			updateEnabled();
+		}
+		OpaqueWidget::step();
+	}
 };
 
 
-struct QuantizerDisplay : LedDisplay {
-	void setModule(Quantizer* module) {
-		std::vector<Vec> noteAbsPositions = {
-			mm2px(Vec(2.242, 60.54)),
-			mm2px(Vec(2.242, 58.416)),
-			mm2px(Vec(2.242, 52.043)),
-			mm2px(Vec(2.242, 49.919)),
-			mm2px(Vec(2.242, 45.67)),
-			mm2px(Vec(2.242, 39.298)),
-			mm2px(Vec(2.242, 37.173)),
-			mm2px(Vec(2.242, 30.801)),
-			mm2px(Vec(2.242, 28.677)),
-			mm2px(Vec(2.242, 22.304)),
-			mm2px(Vec(2.242, 20.18)),
-			mm2px(Vec(2.242, 15.931)),
-		};
-		std::vector<Vec> noteSizes = {
-			mm2px(Vec(10.734, 5.644)),
-			mm2px(Vec(8.231, 3.52)),
-			mm2px(Vec(10.734, 7.769)),
-			mm2px(Vec(8.231, 3.52)),
-			mm2px(Vec(10.734, 5.644)),
-			mm2px(Vec(10.734, 5.644)),
-			mm2px(Vec(8.231, 3.52)),
-			mm2px(Vec(10.734, 7.769)),
-			mm2px(Vec(8.231, 3.52)),
-			mm2px(Vec(10.734, 7.768)),
-			mm2px(Vec(8.231, 3.52)),
-			mm2px(Vec(10.734, 5.644)),
-		};
+struct WhitePianoNote : PianoNote {
+	WhitePianoNote(Quantizer* const module, SvgPanel* const panel, const int note) : PianoNote(module, panel, note) {
+		float y;
+		switch (note) {
+		case 11: y = 0.f; break;
+		case  9: y = 24.f; break;
+		case  7: y = 48.f; break;
+		case  5: y = 72.f; break;
+		case  4: y = 96.f; break;
+		case  2: y = 120.f; break;
+		case  0: y = 144.f; break;
+		default: return;
+		}
+		box.pos = Vec(1.f, y);
+		box.size = Vec(56.f, 23.f);
+	}
+};
 
+
+struct BlackPianoNote : PianoNote {
+	BlackPianoNote(Quantizer* const module, SvgPanel* const panel, const int note) : PianoNote(module, panel, note)  {
+		float y;
+		switch (note) {
+		case 10: y = 12.f; break;
+		case  8: y = 40.f; break;
+		case  6: y = 68.f; break;
+		case  3: y = 110.f; break;
+		case  1: y = 138.f; break;
+		default: return;
+		}
+		box.pos = Vec(0.f, y);
+		box.size = Vec(35.f, 16.f);
+	}
+};
+
+
+struct PianoKeyboard : Widget {
+	PianoKeyboard(Quantizer* const module, SvgPanel* const panel) {
 		// White notes
 		static const std::vector<int> whiteNotes = {0, 2, 4, 5, 7, 9, 11};
 		for (int note : whiteNotes) {
-			QuantizerButton* quantizerButton = new QuantizerButton();
-			quantizerButton->box.pos = noteAbsPositions[note] - box.pos;
-			quantizerButton->box.size = noteSizes[note];
-			quantizerButton->module = module;
-			quantizerButton->note = note;
-			addChild(quantizerButton);
+			WhitePianoNote* pianoNote = new WhitePianoNote(module, panel, note);
+			pianoNote->module = module;
+			addChild(pianoNote);
 		}
 		// Black notes
 		static const std::vector<int> blackNotes = {1, 3, 6, 8, 10};
 		for (int note : blackNotes) {
-			QuantizerButton* quantizerButton = new QuantizerButton();
-			quantizerButton->box.pos = noteAbsPositions[note] - box.pos;
-			quantizerButton->box.size = noteSizes[note];
-			quantizerButton->module = module;
-			quantizerButton->note = note;
-			addChild(quantizerButton);
+			BlackPianoNote* const pianoNote = new BlackPianoNote(module, panel, note);
+			pianoNote->module = module;
+			addChild(pianoNote);
 		}
 	}
 };
@@ -235,19 +270,21 @@ struct QuantizerDisplay : LedDisplay {
 struct QuantizerWidget : ModuleWidget {
 	typedef FundamentalBlackKnob<30> Knob;
 
-	static constexpr const int kWidth = 3;
+	static constexpr const int kWidth = 4;
 	static constexpr const float kHorizontalCenter = kRACK_GRID_WIDTH * kWidth * 0.5f;
 
 	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 308.f - kRACK_JACK_HALF_SIZE;
-	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 103.f - Knob::kHalfSize;
+	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 83.f - Knob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 
 	QuantizerWidget(Quantizer* module) {
 		setModule(module);
-		setPanel(createPanel(asset::plugin(pluginInstance, "res/Quantizer.svg")));
+
+		app::SvgPanel* const panel = createPanel(asset::plugin(pluginInstance, "res/Quantizer.svg"));
+		setPanel(panel);
 
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
+		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH * 2, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Quantizer::PITCH_INPUT));
 
@@ -255,12 +292,9 @@ struct QuantizerWidget : ModuleWidget {
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Quantizer::PITCH_OUTPUT));
 
-		/* TODO
-		QuantizerDisplay* quantizerDisplay = createWidget<QuantizerDisplay>(Vec(0.0, 13.039)));
-		quantizerDisplay->box.size = Vec(15.24, 55.88));
-		quantizerDisplay->setModule(module);
-		addChild(quantizerDisplay);
-		*/
+		PianoKeyboard* const pianoKeyboard = new PianoKeyboard(module, panel);
+		pianoKeyboard->box.pos = Vec(2.f, kRACK_GRID_HEIGHT - 133.f - 167.f);
+		addChild(pianoKeyboard);
 	}
 };
 

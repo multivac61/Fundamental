@@ -5,6 +5,8 @@ struct VCMixer : Module {
 	enum ParamIds {
 		MIX_LVL_PARAM,
 		ENUMS(LVL_PARAMS, 4),
+		CV_MIX_LVL_PARAM,
+		ENUMS(CV_LVL_PARAMS, 4),
 		NUM_PARAMS
 	};
 	enum InputIds {
@@ -41,6 +43,12 @@ struct VCMixer : Module {
 		configOutput(MIX_OUTPUT, "Mix");
 		for (int i = 0; i < 4; i++)
 			configOutput(CH_OUTPUTS + i, string::f("Channel %d", i + 1));
+		// new stuff for Cardinal
+		configParam(CV_MIX_LVL_PARAM, 0.f, 2.f, 1.f, "Mix CV signal", "%", 0.f, 100.f);
+		configParam(CV_LVL_PARAMS + 0, 0.f, 2.f, 1.f, "Channel 1 CV signal", "%", 0.f, 100.f);
+		configParam(CV_LVL_PARAMS + 1, 0.f, 2.f, 1.f, "Channel 2 CV signal", "%", 0.f, 100.f);
+		configParam(CV_LVL_PARAMS + 2, 0.f, 2.f, 1.f, "Channel 3 CV signal", "%", 0.f, 100.f);
+		configParam(CV_LVL_PARAMS + 3, 0.f, 2.f, 1.f, "Channel 4 CV signal", "%", 0.f, 100.f);
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -71,9 +79,13 @@ struct VCMixer : Module {
 
 				// Apply CV gain
 				if (inputs[CV_INPUTS + i].isConnected()) {
+					const float cvlvl = params[CV_LVL_PARAMS + i].getValue();
 					for (int c = 0; c < channels; c++) {
 						float cv = clamp(inputs[CV_INPUTS + i].getPolyVoltage(c) / 10.f, 0.f, 1.f);
-						in[c] *= cv;
+						if (cvlvl < 1.f)
+							in[c] = in[c] * (1.f - cvlvl) + in[c] * cv * cvlvl;
+						else
+							in[c] *= cv * cvlvl;
 					}
 				}
 
@@ -105,9 +117,13 @@ struct VCMixer : Module {
 
 			// Apply mix CV gain
 			if (inputs[MIX_CV_INPUT].isConnected()) {
+				const float cvlvl = params[CV_MIX_LVL_PARAM].getValue();
 				for (int c = 0; c < mixChannels; c++) {
 					float cv = clamp(inputs[MIX_CV_INPUT].getPolyVoltage(c) / 10.f, 0.f, 1.f);
-					mix[c] *= cv;
+					if (cvlvl < 1.f)
+						mix[c] = mix[c] * (1.f - cvlvl) + mix[c] * cv * cvlvl;
+					else
+						mix[c] *= cv * cvlvl;
 				}
 			}
 
@@ -121,7 +137,7 @@ struct VCMixer : Module {
 
 struct VCMixerWidget : ModuleWidget {
 	typedef FundamentalBlackKnob<40> BigKnob;
-	typedef FundamentalBlackKnob<27> MediumKnob;
+	typedef FundamentalBlackKnob<26> MediumKnob;
 	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 9;
@@ -138,7 +154,7 @@ struct VCMixerWidget : ModuleWidget {
 
 	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 309.5f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 245.f - MediumKnob::kHalfSize;
-	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 214.f - SmallKnob::kHalfSize;
+	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 215.5f - SmallKnob::kHalfSize;
 	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 186.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 133.f - kRACK_JACK_HALF_SIZE;
 	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 64.f - kRACK_JACK_HALF_SIZE;
@@ -163,7 +179,10 @@ struct VCMixerWidget : ModuleWidget {
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos3, kVerticalPos2), module, VCMixer::LVL_PARAMS + 2));
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos4, kVerticalPos2), module, VCMixer::LVL_PARAMS + 3));
 
-		// FIXME missing cv level params @ kVerticalPos3
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos1, kVerticalPos3), module, VCMixer::CV_LVL_PARAMS + 0));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos2, kVerticalPos3), module, VCMixer::CV_LVL_PARAMS + 1));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos3, kVerticalPos3), module, VCMixer::CV_LVL_PARAMS + 2));
+		addParam(createParamCentered<SmallKnob>(Vec(kHorizontalPos4, kVerticalPos3), module, VCMixer::CV_LVL_PARAMS + 3));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1, kVerticalPos4), module, VCMixer::CV_INPUTS + 0));
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos4), module, VCMixer::CV_INPUTS + 1));
@@ -171,7 +190,7 @@ struct VCMixerWidget : ModuleWidget {
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos4, kVerticalPos4), module, VCMixer::CV_INPUTS + 3));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(14.925f + kRACK_JACK_HALF_SIZE, kVerticalPos5), module, VCMixer::MIX_CV_INPUT));
-		// FIXME missing cv mix param @ 52.74 + SmallKnob::kHalfSize / kVerticalPos5
+		addParam(createParamCentered<SmallKnob>(Vec(52.74f + SmallKnob::kHalfSize, kVerticalPos5), module, VCMixer::CV_MIX_LVL_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(86.f + BigKnob::kHalfSize, kVerticalPos5), module, VCMixer::MIX_LVL_PARAM));
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos6), module, VCMixer::MIX_OUTPUT));

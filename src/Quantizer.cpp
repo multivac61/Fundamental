@@ -185,6 +185,7 @@ struct PianoNote : OpaqueWidget {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
 			module->enabledNotes[note] ^= true;
 			module->updateRanges();
+			enabled = module->enabledNotes[note];
 			updateEnabled();
 		}
 		OpaqueWidget::onDragStart(e);
@@ -193,7 +194,7 @@ struct PianoNote : OpaqueWidget {
 	void onDragEnter(const event::DragEnter& e) override {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
 			if (PianoNote* const origin = dynamic_cast<PianoNote*>(e.origin)) {
-				module->enabledNotes[note] = module->enabledNotes[origin->note];
+				enabled = module->enabledNotes[note] = module->enabledNotes[origin->note];
 				module->updateRanges();
 				updateEnabled();
 			}

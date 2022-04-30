@@ -9,12 +9,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="knob-marker.svg"
+   sodipodi:docname="knob-marker-small.svg"
    id="svg482"
-   viewBox="0 0 68.0 68.0"
+   viewBox="0 0 18 18"
    version="1.1"
-   height="68.0"
-   width="68.0">
+   height="18"
+   width="18">
   <metadata
      id="metadata488">
     <rdf:RDF>
@@ -23,6 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -32,9 +33,9 @@
        style="color-interpolation-filters:sRGB"
        inkscape:label="Blur"
        id="filter11719"
-       x="-0.99368436"
-       y="-0.2676257"
-       width="2.9873687"
+       x="-0.99368435"
+       y="-0.26762569"
+       width="2.9873686"
        height="1.5352514">
       <feGaussianBlur
          stdDeviation="1 1"
@@ -53,32 +54,6 @@
     </filter>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient16137-0"
-       id="linearGradient16139-1"
-       x1="50.164425"
-       y1="70.256355"
-       x2="50.31778"
-       y2="79.224106"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.95156674,0,0,1.5456938,-16.442542,-90.055995)" />
-    <linearGradient
-       inkscape:collect="always"
-       id="linearGradient16137-0">
-      <stop
-         style="stop-color:#ffffff;stop-opacity:1"
-         offset="0"
-         id="stop16133-0" />
-      <stop
-         style="stop-color:#838383;stop-opacity:0.23790321"
-         offset="0.93217719"
-         id="stop4677" />
-      <stop
-         style="stop-color:#bcbcbc;stop-opacity:0.81451613"
-         offset="1"
-         id="stop16135-4" />
-    </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
        xlink:href="#linearGradient13644"
        id="linearGradient4715"
        x1="31.340908"
@@ -86,7 +61,7 @@
        x2="31.486288"
        y2="32.426929"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.0037676,0,0,0.87557877,-0.16673027,4.007879)" />
+       gradientTransform="matrix(0.26692307,0,0,0.20312283,-0.89463872,51.904862)" />
     <linearGradient
        inkscape:collect="always"
        id="linearGradient13644">
@@ -124,21 +99,21 @@
      showguides="false" />
   <g
      id="g1249"
-     transform="rotate(0.07311286,-81.860689,262.28855)">
+     transform="rotate(0.07311286,39101.24,237.28666)">
     <circle
-       style="opacity:0.7;fill:#ffffff;fill-opacity:0;stroke:none"
+       style="opacity:0.7;fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:0.2647059"
        id="path877"
-       cx="33.708595"
-       cy="33.852341"
-       r="34" />
+       cx="8.7405167"
+       cy="58.88422"
+       r="9" />
     <rect
-       style="opacity:0.84294888;fill:url(#linearGradient16139-1);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient4715);stroke-width:0.27258307;stroke-opacity:1"
+       style="opacity:0.84294888;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient4715);stroke-width:0.06770288;stroke-opacity:1"
        id="rect822-8"
-       width="4.5965509"
-       height="27.722786"
-       x="31.438185"
-       y="4.677423"
-       rx="1.9031335"
-       transform="matrix(0.99996288,-0.0086159,0.01092257,0.99994035,0,0)" />
+       width="1.2223203"
+       height="6.431324"
+       x="7.509778"
+       y="52.060192"
+       rx="0.50608361"
+       transform="matrix(0.99997051,-0.00767917,0.0123337,0.99992394,0,0)" />
   </g>
 </svg>

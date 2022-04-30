@@ -222,7 +222,7 @@ struct VCF : Module {
 
 struct VCFWidget : ModuleWidget {
 	typedef FundamentalBlackKnob<40> BigKnob;
-	typedef FundamentalBlackKnob<14> SmallKnob;
+	typedef FundamentalBlackKnob<18> SmallKnob;
 
 	static constexpr const int kWidth = 7;
 	static constexpr const float kPosLeft = 25.5f;

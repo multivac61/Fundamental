@@ -32,8 +32,13 @@ struct FundamentalBlackKnob : RoundKnob {
 	float scale;
 
 	FundamentalBlackKnob() {
-		setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob-marker.svg")));
-		bg->setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob.svg")));
+		if (size <= 22) {
+			setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob-marker-small.svg")));
+			bg->setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob-small.svg")));
+		} else {
+			setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob-marker.svg")));
+			bg->setSvg(Svg::load(asset::plugin(pluginInstance, "res/components/knob.svg")));
+		}
 
 		scale = size / sw->box.size.x;
 		box.size = Vec(size, size);

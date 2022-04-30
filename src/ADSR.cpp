@@ -307,7 +307,7 @@ struct ADSRWidget : ModuleWidget {
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE), module, ADSR::ENVELOPE_OUTPUT));
 
-		ADSRDisplay* display = createWidget<ADSRDisplay>(Vec(5.75f, kRACK_GRID_HEIGHT - 304.f));
+		ADSRDisplay* display = createWidget<ADSRDisplay>(Vec(5.75f, kRACK_GRID_HEIGHT - 302.f));
 		display->module = module;
 		addChild(display);
 	}

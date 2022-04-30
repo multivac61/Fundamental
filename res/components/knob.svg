@@ -153,9 +153,9 @@
      inkscape:window-maximized="1"
      inkscape:window-y="0"
      inkscape:window-x="0"
-     inkscape:cy="49.909547"
-     inkscape:cx="-1.00326"
-     inkscape:zoom="6.956683"
+     inkscape:cy="33.69687"
+     inkscape:cx="14.984364"
+     inkscape:zoom="9.8382354"
      showgrid="false"
      id="namedview484"
      inkscape:window-height="1026"
@@ -170,15 +170,16 @@
      pagecolor="#ffffff"
      inkscape:pagecheckerboard="0"
      showguides="false" />
-  <circle
-     style="fill:#070707;fill-opacity:1;stroke:#5d5c5a;stroke-width:1.37917483;stroke-opacity:1"
+  <ellipse
+     style="fill:#5d5c5a;fill-opacity:1;stroke:#070707;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="path456-2"
      cx="34"
      cy="34"
-     r="33.310413" />
+     rx="32.999985"
+     ry="32.999989" />
   <g
      id="g842"
-     transform="translate(-104.24356,-9.150974)">
+     transform="matrix(0.9375,0,0,0.9375,-95.603342,-6.4540382)">
     <g
        id="g864"
        transform="matrix(0.96035426,0,0,0.99127088,105.59152,7.7555619)">

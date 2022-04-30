@@ -116,20 +116,18 @@ struct VCAWidget : ModuleWidget {
 	static constexpr const float kBorderPadding = 5.f;
 	static constexpr const float kUsableWidth = kRACK_GRID_WIDTH * kWidth - kBorderPadding * 2.f;
 
-	static constexpr const float kOffsetX = 11.f; // FIXME
-	static constexpr const float kOffsetY = 11.f; // FIXME
-	static constexpr const float kPosLeft = kBorderPadding + kUsableWidth * 0.25f - kOffsetX;
-	static constexpr const float kPosCenter = kBorderPadding + kUsableWidth * 0.5f - kOffsetX;
-	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.75f - kOffsetX;
+	static constexpr const float kPosLeft = kBorderPadding + kUsableWidth * 0.2f;
+	static constexpr const float kPosCenter = kBorderPadding + kUsableWidth * 0.5f;
+	static constexpr const float kPosRight = kBorderPadding + kUsableWidth * 0.8f;
 
-	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 312.f - kRACK_JACK_HALF_SIZE - kOffsetY;
-	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 280.f - kRACK_JACK_HALF_SIZE - kOffsetY;
-	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 233.f - Knob::kHalfSize - kOffsetY*2;
-	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 197.f - kRACK_JACK_HALF_SIZE - kOffsetY;
-	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 140.f - kRACK_JACK_HALF_SIZE - kOffsetY;
-	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 108.f - kRACK_JACK_HALF_SIZE - kOffsetY;
-	static constexpr const float kVerticalPos7 = kRACK_GRID_HEIGHT - 61.f - Knob::kHalfSize - kOffsetY*2;
-	static constexpr const float kVerticalPos8 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE - kOffsetY;
+	static constexpr const float kVerticalPos1 = kRACK_GRID_HEIGHT - 312.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 280.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 237.f - Knob::kHalfSize;
+	static constexpr const float kVerticalPos4 = kRACK_GRID_HEIGHT - 197.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos5 = kRACK_GRID_HEIGHT - 140.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos6 = kRACK_GRID_HEIGHT - 108.f - kRACK_JACK_HALF_SIZE;
+	static constexpr const float kVerticalPos7 = kRACK_GRID_HEIGHT - 65.f - Knob::kHalfSize;
+	static constexpr const float kVerticalPos8 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 
 	VCAWidget(VCA* module) {
 		setModule(module);
@@ -140,17 +138,17 @@ struct VCAWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInput<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, VCA::IN1_INPUT));
-		addInput(createInput<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, VCA::EXP1_INPUT));
-		addInput(createInput<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, VCA::LIN1_INPUT));
-		addParam(createParam<Knob>(Vec(kPosCenter - 7.f /* FIXME */, kVerticalPos3), module, VCA::LEVEL1_PARAM));
-		addOutput(createOutput<FundamentalPort>(Vec(kPosCenter, kVerticalPos4), module, VCA::OUT1_OUTPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, VCA::IN1_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos2), module, VCA::EXP1_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos2), module, VCA::LIN1_INPUT));
+		addParam(createParamCentered<Knob>(Vec(kPosCenter, kVerticalPos3), module, VCA::LEVEL1_PARAM));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos4), module, VCA::OUT1_OUTPUT));
 
-		addInput(createInput<FundamentalPort>(Vec(kPosCenter, kVerticalPos5), module, VCA::IN2_INPUT));
-		addInput(createInput<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, VCA::EXP2_INPUT));
-		addInput(createInput<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, VCA::LIN2_INPUT));
-		addParam(createParam<Knob>(Vec(kPosCenter - 7.f /* FIXME */, kVerticalPos7), module, VCA::LEVEL2_PARAM));
-		addOutput(createOutput<FundamentalPort>(Vec(kPosCenter, kVerticalPos8), module, VCA::OUT2_OUTPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos5), module, VCA::IN2_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosLeft, kVerticalPos6), module, VCA::EXP2_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kPosRight, kVerticalPos6), module, VCA::LIN2_INPUT));
+		addParam(createParamCentered<Knob>(Vec(kPosCenter, kVerticalPos7), module, VCA::LEVEL2_PARAM));
+		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos8), module, VCA::OUT2_OUTPUT));
 	}
 };
 

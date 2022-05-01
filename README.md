@@ -10,6 +10,8 @@ This repository contains a fork of [VCV Fundamental](https://github.com/VCVRack/
 Contrary to the original VCV project, pull requests for changes, fixes etc are welcome!
 Just note that compatibility with the original is required, though it only needs to be one way (from original to fork).
 
+![screenshot](Screenshot.png "Screenshot")
+
 ## Building
 
 Follow the build instructions for VCV Rack plugins at https://vcvrack.com/manual/Building.html#building-rack-plugins.

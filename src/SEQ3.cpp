@@ -326,21 +326,21 @@ struct SEQ3Widget : ModuleWidget {
 		addParam(createParamCentered<SmallKnob>(Vec(165.5f, kVerticalPos1a), module, SEQ3::STEPS_CV_PARAM));
 		addInput(createInputCentered<FundamentalPort>(Vec(165.5f, kVerticalPos1b), module, SEQ3::STEPS_INPUT));
 
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(264.5f, kVerticalPos1a), module, SEQ3::RUN_PARAM, SEQ3::RUN_LIGHT));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(300.5f, kVerticalPos1a), module, SEQ3::RESET_PARAM, SEQ3::RESET_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(264.5f, kVerticalPos1a), module, SEQ3::RUN_PARAM, SEQ3::RUN_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(300.5f, kVerticalPos1a), module, SEQ3::RESET_PARAM, SEQ3::RESET_LIGHT));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(228.5f, kVerticalPos1b), module, SEQ3::CLOCK_INPUT));
 		addInput(createInputCentered<FundamentalPort>(Vec(264.5f, kVerticalPos1b), module, SEQ3::RUN_INPUT));
 		addInput(createInputCentered<FundamentalPort>(Vec(300.5f, kVerticalPos1b), module, SEQ3::RESET_INPUT));
 
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos1, kVerticalPos2), module, SEQ3::GATE_PARAMS + 0, SEQ3::GATE_LIGHTS + 0));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos2, kVerticalPos2), module, SEQ3::GATE_PARAMS + 1, SEQ3::GATE_LIGHTS + 1));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos3, kVerticalPos2), module, SEQ3::GATE_PARAMS + 2, SEQ3::GATE_LIGHTS + 2));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos4, kVerticalPos2), module, SEQ3::GATE_PARAMS + 3, SEQ3::GATE_LIGHTS + 3));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos5, kVerticalPos2), module, SEQ3::GATE_PARAMS + 4, SEQ3::GATE_LIGHTS + 4));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos6, kVerticalPos2), module, SEQ3::GATE_PARAMS + 5, SEQ3::GATE_LIGHTS + 5));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos7, kVerticalPos2), module, SEQ3::GATE_PARAMS + 6, SEQ3::GATE_LIGHTS + 6));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos8, kVerticalPos2), module, SEQ3::GATE_PARAMS + 7, SEQ3::GATE_LIGHTS + 7));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos1, kVerticalPos2), module, SEQ3::GATE_PARAMS + 0, SEQ3::GATE_LIGHTS + 0));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos2, kVerticalPos2), module, SEQ3::GATE_PARAMS + 1, SEQ3::GATE_LIGHTS + 1));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos3, kVerticalPos2), module, SEQ3::GATE_PARAMS + 2, SEQ3::GATE_LIGHTS + 2));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos4, kVerticalPos2), module, SEQ3::GATE_PARAMS + 3, SEQ3::GATE_LIGHTS + 3));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos5, kVerticalPos2), module, SEQ3::GATE_PARAMS + 4, SEQ3::GATE_LIGHTS + 4));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos6, kVerticalPos2), module, SEQ3::GATE_PARAMS + 5, SEQ3::GATE_LIGHTS + 5));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos7, kVerticalPos2), module, SEQ3::GATE_PARAMS + 6, SEQ3::GATE_LIGHTS + 6));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos8, kVerticalPos2), module, SEQ3::GATE_PARAMS + 7, SEQ3::GATE_LIGHTS + 7));
 
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos1, kVerticalPos3), module, SEQ3::CV_PARAMS + 8 * 0 + 0));
 		addParam(createParamCentered<MediumKnob>(Vec(kHorizontalPos2, kVerticalPos3), module, SEQ3::CV_PARAMS + 8 * 0 + 1));

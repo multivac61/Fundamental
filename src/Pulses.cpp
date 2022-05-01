@@ -75,16 +75,16 @@ struct PulsesWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos1), module, Pulses::PUSH_PARAMS + 0, Pulses::PUSH_LIGHTS + 0));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos2), module, Pulses::PUSH_PARAMS + 1, Pulses::PUSH_LIGHTS + 1));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos3), module, Pulses::PUSH_PARAMS + 2, Pulses::PUSH_LIGHTS + 2));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos4), module, Pulses::PUSH_PARAMS + 3, Pulses::PUSH_LIGHTS + 3));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos5), module, Pulses::PUSH_PARAMS + 4, Pulses::PUSH_LIGHTS + 4));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos6), module, Pulses::PUSH_PARAMS + 5, Pulses::PUSH_LIGHTS + 5));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos7), module, Pulses::PUSH_PARAMS + 6, Pulses::PUSH_LIGHTS + 6));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos8), module, Pulses::PUSH_PARAMS + 7, Pulses::PUSH_LIGHTS + 7));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos9), module, Pulses::PUSH_PARAMS + 8, Pulses::PUSH_LIGHTS + 8));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kPosLeft, kVerticalPos10), module, Pulses::PUSH_PARAMS + 9, Pulses::PUSH_LIGHTS + 9));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos1), module, Pulses::PUSH_PARAMS + 0, Pulses::PUSH_LIGHTS + 0));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos2), module, Pulses::PUSH_PARAMS + 1, Pulses::PUSH_LIGHTS + 1));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos3), module, Pulses::PUSH_PARAMS + 2, Pulses::PUSH_LIGHTS + 2));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos4), module, Pulses::PUSH_PARAMS + 3, Pulses::PUSH_LIGHTS + 3));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos5), module, Pulses::PUSH_PARAMS + 4, Pulses::PUSH_LIGHTS + 4));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos6), module, Pulses::PUSH_PARAMS + 5, Pulses::PUSH_LIGHTS + 5));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos7), module, Pulses::PUSH_PARAMS + 6, Pulses::PUSH_LIGHTS + 6));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos8), module, Pulses::PUSH_PARAMS + 7, Pulses::PUSH_LIGHTS + 7));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos9), module, Pulses::PUSH_PARAMS + 8, Pulses::PUSH_LIGHTS + 8));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kPosLeft, kVerticalPos10), module, Pulses::PUSH_PARAMS + 9, Pulses::PUSH_LIGHTS + 9));
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos1), module, Pulses::TRIG_OUTPUTS + 0));
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kPosCenter, kVerticalPos2), module, Pulses::TRIG_OUTPUTS + 1));

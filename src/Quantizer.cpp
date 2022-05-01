@@ -126,7 +126,13 @@ struct Quantizer : Module {
 
 
 struct PianoNote : OpaqueWidget {
-	bool enabled = true;
+	enum State {
+		kInit,
+		kDisabled,
+		kEnabledNotPlaying,
+		kEnabledAndPlaying
+	} state = kInit;
+
 	int note;
 	Quantizer* module;
 	float opacities[2];
@@ -160,6 +166,9 @@ struct PianoNote : OpaqueWidget {
 				break;
 			}
 		}
+
+		if (svgFb != nullptr)
+			svgFb->setDirty();
 	}
 
 	/* debug painting to ensure valid bounds
@@ -171,11 +180,11 @@ struct PianoNote : OpaqueWidget {
 	}
 	*/
 
-	void updateEnabled() {
+	void updateState() {
 		for (int i=0; i<2; ++i) {
 			if (shapes[i] == nullptr)
 				break;
-			shapes[i]->opacity = enabled ? opacities[i] : 0.f;
+			shapes[i]->opacity = state == kDisabled ? 0.f : opacities[i] * (state == kEnabledAndPlaying ? 1.f : 0.5f);
 		}
 		if (svgFb != nullptr)
 			svgFb->setDirty();
@@ -185,8 +194,6 @@ struct PianoNote : OpaqueWidget {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
 			module->enabledNotes[note] ^= true;
 			module->updateRanges();
-			enabled = module->enabledNotes[note];
-			updateEnabled();
 		}
 		OpaqueWidget::onDragStart(e);
 	}
@@ -194,19 +201,26 @@ struct PianoNote : OpaqueWidget {
 	void onDragEnter(const event::DragEnter& e) override {
 		if (e.button == GLFW_MOUSE_BUTTON_LEFT) {
 			if (PianoNote* const origin = dynamic_cast<PianoNote*>(e.origin)) {
-				enabled = module->enabledNotes[note] = module->enabledNotes[origin->note];
+				module->enabledNotes[note] = module->enabledNotes[origin->note];
 				module->updateRanges();
-				updateEnabled();
 			}
 		}
 		OpaqueWidget::onDragEnter(e);
 	}
 
 	void step() override {
-		if (module != nullptr && module->enabledNotes[note] != enabled) {
-			enabled = module->enabledNotes[note];
-			updateEnabled();
+		if (module == nullptr) {
+			return;
 		}
+
+		const State newstate = !module->enabledNotes[note] ? kDisabled
+							 : module->playingNotes[note] ? kEnabledAndPlaying : kEnabledNotPlaying;
+
+		if (newstate != state) {
+			state = newstate;
+			updateState();
+		}
+
 		OpaqueWidget::step();
 	}
 };
@@ -281,7 +295,11 @@ struct QuantizerWidget : ModuleWidget {
 	QuantizerWidget(Quantizer* module) {
 		setModule(module);
 
-		app::SvgPanel* const panel = createPanel(asset::plugin(pluginInstance, "res/Quantizer.svg"));
+		// make a copy so we can modify svg at runtime
+		std::shared_ptr<window::Svg> svg = std::make_shared<window::Svg>();
+		svg->loadFile(asset::plugin(pluginInstance, "res/Quantizer.svg"));
+		app::SvgPanel* panel = new app::SvgPanel;
+		panel->setBackground(svg);
 		setPanel(panel);
 
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));

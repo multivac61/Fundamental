@@ -96,3 +96,9 @@ struct FundamentalLightLatch : app::SvgSwitch {
 		return light;
 	}
 };
+
+struct FundamentalLightTrigger : FundamentalLightLatch {
+	FundamentalLightTrigger() {
+		momentary = true;
+	}
+};

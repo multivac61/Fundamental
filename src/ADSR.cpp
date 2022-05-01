@@ -288,7 +288,7 @@ struct ADSRWidget : ModuleWidget {
 
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos1of3, kVerticalPos1), module, ADSR::GATE_INPUT));
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2of3, kVerticalPos1), module, ADSR::RETRIG_INPUT));
-		addParam(createLightParamCentered<FundamentalLightLatch>(Vec(kHorizontalPos3of3, kVerticalPos1), module, ADSR::PUSH_PARAM, ADSR::PUSH_LIGHT));
+		addParam(createLightParamCentered<FundamentalLightTrigger>(Vec(kHorizontalPos3of3, kVerticalPos1), module, ADSR::PUSH_PARAM, ADSR::PUSH_LIGHT));
 
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos1of4, kVerticalPos2), module, ADSR::ATTACK_PARAM));
 		addParam(createParamCentered<BigKnob>(Vec(kHorizontalPos2of4, kVerticalPos2), module, ADSR::DECAY_PARAM));

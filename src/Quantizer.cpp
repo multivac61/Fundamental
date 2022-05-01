@@ -166,9 +166,6 @@ struct PianoNote : OpaqueWidget {
 				break;
 			}
 		}
-
-		if (svgFb != nullptr)
-			svgFb->setDirty();
 	}
 
 	/* debug painting to ensure valid bounds

@@ -125,6 +125,7 @@ struct Quantizer : Module {
 };
 
 
+#ifndef HEADLESS
 struct PianoNote : OpaqueWidget {
 	enum State {
 		kInit,
@@ -313,6 +314,15 @@ struct QuantizerWidget : ModuleWidget {
 		addChild(pianoKeyboard);
 	}
 };
+#else
+struct QuantizerWidget : ModuleWidget {
+	QuantizerWidget(Quantizer* module) {
+		setModule(module);
+		addInput(createInputCentered<FundamentalPort>({}, module, Quantizer::PITCH_INPUT));
+		addOutput(createOutputCentered<FundamentalPort>({}, module, Quantizer::PITCH_OUTPUT));
+	}
+};
+#endif
 
 
 Model* modelQuantizer = createModel<Quantizer, QuantizerWidget>("Quantizer");

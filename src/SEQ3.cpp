@@ -105,6 +105,8 @@ struct SEQ3 : Module {
 		configOutput(RESET_OUTPUT, "Reset");
 
 		configLight(CLOCK_LIGHT, "Clock trigger");
+		configLight(RUN_LIGHT, "Run state");
+		configLight(RESET_LIGHT, "Reset trigger");
 
 		onReset();
 	}

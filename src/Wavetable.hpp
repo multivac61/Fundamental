@@ -118,6 +118,9 @@ struct Wavetable {
 		float* outF = (float*) pffft_aligned_malloc(sizeof(float) * 2 * waveLen * quality);
 		dsp::RealFFT outFFT(waveLen * quality);
 
+		std::memset(inF, 0, sizeof(float) * 2 * waveLen);
+		std::memset(outF, 0, sizeof(float) * 2 * waveLen * quality);
+
 		for (size_t i = 0; i < waveCount; i++) {
 			// Compute FFT of wave
 			for (size_t j = 0; j < waveLen; j++) {

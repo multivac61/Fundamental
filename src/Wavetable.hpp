@@ -111,11 +111,11 @@ struct Wavetable {
 		interpolatedSamples.clear();
 		interpolatedSamples.resize(octaves * samples.size() * quality);
 
-		float* in = new float[waveLen];
-		float* inF = new float[2 * waveLen];
+		float* in = (float*) pffft_aligned_malloc(sizeof(float) * waveLen);
+		float* inF = (float*) pffft_aligned_malloc(sizeof(float) * 2 * waveLen);
 		dsp::RealFFT inFFT(waveLen);
 
-		float* outF = new float[2 * waveLen * quality]();
+		float* outF = (float*) pffft_aligned_malloc(sizeof(float) * 2 * waveLen * quality);
 		dsp::RealFFT outFFT(waveLen * quality);
 
 		for (size_t i = 0; i < waveCount; i++) {
@@ -136,9 +136,9 @@ struct Wavetable {
 			}
 		}
 
-		delete[] in;
-		delete[] inF;
-		delete[] outF;
+		pffft_aligned_free(in);
+		pffft_aligned_free(inF);
+		pffft_aligned_free(outF);
 	}
 
 	json_t* toJson() const {

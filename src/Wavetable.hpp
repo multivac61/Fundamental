@@ -233,7 +233,8 @@ struct Wavetable {
 
 	void loadDialog() {
 #ifdef USING_CARDINAL_NOT_RACK
-		async_dialog_filebrowser(false, wavetableDir.empty() ? NULL : wavetableDir.c_str(), "Load wavetable", [this](char* pathC) {
+		async_dialog_filebrowser(false, nullptr, wavetableDir.empty() ? NULL : wavetableDir.c_str(),
+		                         "Load wavetable", [this](char* pathC) {
 			loadPathSelected(pathC);
 		});
 #else
@@ -283,7 +284,8 @@ struct Wavetable {
 
 	void saveDialog() const {
 #ifdef USING_CARDINAL_NOT_RACK
-		async_dialog_filebrowser(true, wavetableDir.empty() ? NULL : wavetableDir.c_str(), "Save wavetable", [this](char* pathC) {
+		async_dialog_filebrowser(true, "wavetable.wav", wavetableDir.empty() ? NULL : wavetableDir.c_str(),
+		                         "Save wavetable", [this](char* pathC) {
 			savePathSelected(pathC);
 		});
 #else

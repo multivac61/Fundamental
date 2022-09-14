@@ -396,7 +396,7 @@ struct ScopeDisplay : Widget {
 	void drawBackground(const DrawArgs& args) {
 		Rect b = box.zeroPos().shrink(Vec(0, 15));
 
-		nvgStrokeColor(args.vg, nvgRGBA(0xff, 0xff, 0xff, 0x10));
+		nvgStrokeColor(args.vg, settings::darkMode ? nvgRGBA(0xff, 0xff, 0xff, 0x10) : nvgRGBA(0, 0, 0, 0x10));
 		for (int i = 0; i < 5; i++) {
 			nvgBeginPath(args.vg);
 

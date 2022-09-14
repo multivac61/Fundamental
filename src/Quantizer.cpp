@@ -140,12 +140,12 @@ struct PianoNote : OpaqueWidget {
 	NSVGshape* shapes[2] = {};
 	FramebufferWidget* svgFb;
 
-	PianoNote(Quantizer* const module, SvgPanel* const panel, const int note) {
+	PianoNote(Quantizer* const module, FramebufferWidget* const svgFb, std::shared_ptr<window::Svg>& pianoSvg, const int note) {
 		this->note = note;
 		this->module = module;
-		svgFb = panel->fb;
+		this->svgFb = svgFb;
 
-		NSVGimage* const handle = panel->svg->handle;
+		NSVGimage* const handle = pianoSvg->handle;
 		char shapeid[9] = {
 			'k', 'e', 'y', '_',
 			char('0' + ((note+1)/10)),
@@ -225,7 +225,9 @@ struct PianoNote : OpaqueWidget {
 
 
 struct WhitePianoNote : PianoNote {
-	WhitePianoNote(Quantizer* const module, SvgPanel* const panel, const int note) : PianoNote(module, panel, note) {
+	WhitePianoNote(Quantizer* const module, FramebufferWidget* const svgFb, std::shared_ptr<window::Svg>& pianoSvg, const int note)
+		: PianoNote(module, svgFb, pianoSvg, note)
+	{
 		float y;
 		switch (note) {
 		case 11: y = 0.f; break;
@@ -244,7 +246,9 @@ struct WhitePianoNote : PianoNote {
 
 
 struct BlackPianoNote : PianoNote {
-	BlackPianoNote(Quantizer* const module, SvgPanel* const panel, const int note) : PianoNote(module, panel, note)  {
+	BlackPianoNote(Quantizer* const module, FramebufferWidget* const svgFb, std::shared_ptr<window::Svg>& pianoSvg, const int note)
+		: PianoNote(module, svgFb, pianoSvg, note)
+	{
 		float y;
 		switch (note) {
 		case 10: y = 12.f; break;
@@ -261,18 +265,18 @@ struct BlackPianoNote : PianoNote {
 
 
 struct PianoKeyboard : Widget {
-	PianoKeyboard(Quantizer* const module, SvgPanel* const panel) {
+	PianoKeyboard(Quantizer* const module, FramebufferWidget* const svgFb, std::shared_ptr<window::Svg>& pianoSvg) {
 		// White notes
 		static const std::vector<int> whiteNotes = {0, 2, 4, 5, 7, 9, 11};
 		for (int note : whiteNotes) {
-			WhitePianoNote* pianoNote = new WhitePianoNote(module, panel, note);
+			WhitePianoNote* pianoNote = new WhitePianoNote(module, svgFb, pianoSvg, note);
 			pianoNote->module = module;
 			addChild(pianoNote);
 		}
 		// Black notes
 		static const std::vector<int> blackNotes = {1, 3, 6, 8, 10};
 		for (int note : blackNotes) {
-			BlackPianoNote* const pianoNote = new BlackPianoNote(module, panel, note);
+			BlackPianoNote* const pianoNote = new BlackPianoNote(module, svgFb, pianoSvg, note);
 			pianoNote->module = module;
 			addChild(pianoNote);
 		}
@@ -290,15 +294,16 @@ struct QuantizerWidget : ModuleWidget {
 	static constexpr const float kVerticalPos2 = kRACK_GRID_HEIGHT - 83.f - Knob::kHalfSize;
 	static constexpr const float kVerticalPos3 = kRACK_GRID_HEIGHT - 26.f - kRACK_JACK_HALF_SIZE;
 
+	std::shared_ptr<window::Svg> pianoSvg;
+
 	QuantizerWidget(Quantizer* module) {
 		setModule(module);
+		app::SvgPanel* const panel = createPanel(asset::plugin(pluginInstance, "res/Quantizer.svg"));
+		setPanel(panel);
 
 		// make a copy so we can modify svg at runtime
-		std::shared_ptr<window::Svg> svg = std::make_shared<window::Svg>();
-		svg->loadFile(asset::plugin(pluginInstance, "res/Quantizer.svg"));
-		app::SvgPanel* panel = new app::SvgPanel;
-		panel->setBackground(svg);
-		setPanel(panel);
+		pianoSvg = std::make_shared<window::Svg>();
+		pianoSvg->loadFile(asset::plugin(pluginInstance, "res/components/Quantizer-keyboard.svg"));
 
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH * 2, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
@@ -309,9 +314,20 @@ struct QuantizerWidget : ModuleWidget {
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos3), module, Quantizer::PITCH_OUTPUT));
 
-		PianoKeyboard* const pianoKeyboard = new PianoKeyboard(module, panel);
+		PianoKeyboard* const pianoKeyboard = new PianoKeyboard(module, panel->fb, pianoSvg);
 		pianoKeyboard->box.pos = Vec(2.f, kRACK_GRID_HEIGHT - 133.f - 167.f);
 		addChild(pianoKeyboard);
+	}
+
+	void drawLayer(const DrawArgs& args, int layer) override
+	{
+		if (layer != 1)
+			return Widget::drawLayer(args, layer);
+
+		nvgSave(args.vg);
+		nvgTranslate(args.vg, 2, 78);
+		pianoSvg->draw(args.vg);
+		nvgRestore(args.vg);
 	}
 };
 #else

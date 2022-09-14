@@ -164,8 +164,8 @@ struct OctaveWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
 		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
-		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Octave::OCTAVE_INPUT));
-		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Octave::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Octave::PITCH_INPUT));
+		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Octave::OCTAVE_INPUT));
 
 		addChild(createParam<OctaveParam>(Vec(9.6f, kRACK_GRID_HEIGHT - 245.f - OctaveParam::height - OctaveParam::margin), module, Octave::OCTAVE_PARAM));
 

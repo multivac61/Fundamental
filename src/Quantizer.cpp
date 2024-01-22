@@ -305,8 +305,8 @@ struct QuantizerWidget : ModuleWidget {
 		pianoSvg = std::make_shared<window::Svg>();
 		pianoSvg->loadFile(asset::plugin(pluginInstance, "res/components/Quantizer-keyboard.svg"));
 
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH * 2, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH, 0)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH * 2, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Quantizer::PITCH_INPUT));
 

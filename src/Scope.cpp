@@ -396,7 +396,7 @@ struct ScopeDisplay : Widget {
 	void drawBackground(const DrawArgs& args) {
 		Rect b = box.zeroPos().shrink(Vec(0, 15));
 
-		nvgStrokeColor(args.vg, settings::darkMode ? nvgRGBA(0xff, 0xff, 0xff, 0x10) : nvgRGBA(0, 0, 0, 0x10));
+		nvgStrokeColor(args.vg, settings::preferDarkPanels ? nvgRGBA(0xff, 0xff, 0xff, 0x10) : nvgRGBA(0, 0, 0, 0x10));
 		for (int i = 0; i < 5; i++) {
 			nvgBeginPath(args.vg);
 
@@ -504,10 +504,10 @@ struct ScopeWidget : ModuleWidget {
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/Scope.svg")));
 
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
-		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH, 0)));
+		addChild(createWidget<ThemedScrew>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, 0)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
+		addChild(createWidget<ThemedScrew>(Vec(box.size.x - 2 * kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos2, kVerticalPos1), module, Scope::X_INPUT));
 		addInput(createInputCentered<FundamentalPort>(Vec(kHorizontalPos3, kVerticalPos1), module, Scope::Y_INPUT));

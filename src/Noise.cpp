@@ -192,8 +192,8 @@ struct NoiseWidget : ModuleWidget {
 		setModule(module);
 		setPanel(createPanel(asset::plugin(pluginInstance, "res/Noise.svg")));
 
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, 0)));
-		addChild(createWidget<ScrewSilver>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH, 0)));
+		addChild(createWidget<ThemedScrew>(Vec(kRACK_GRID_WIDTH, kRACK_GRID_HEIGHT - kRACK_GRID_WIDTH)));
 
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos1), module, Noise::BLACK_OUTPUT));
 		addOutput(createOutputCentered<FundamentalPort>(Vec(kHorizontalCenter, kVerticalPos2), module, Noise::GRAY_OUTPUT));

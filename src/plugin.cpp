@@ -34,4 +34,17 @@ void init(Plugin* p) {
 	p->addModel(modelMidSide);
 	p->addModel(modelNoise);
 	p->addModel(modelRandom);
+	p->addModel(modelCVMix);
+  p->addModel(modelCompare);
+  p->addModel(modelFade);
+  p->addModel(modelGates);
+  p->addModel(modelLogic);
+  p->addModel(modelMult);
+  p->addModel(modelProcess);
+  p->addModel(modelPush);
+  p->addModel(modelRandomValues);
+  p->addModel(modelRescale);
+  p->addModel(modelSHASR);
+  p->addModel(modelUnity);
+  p->addModel(modelViz);
 }

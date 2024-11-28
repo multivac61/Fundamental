@@ -34,6 +34,18 @@ extern Model* modelViz;
 extern Model* modelMidSide;
 extern Model* modelNoise;
 extern Model* modelRandom;
+extern Model* modelCVMix;
+
+extern Model* modelCompare;
+extern Model* modelFade;
+extern Model* modelGates;
+extern Model* modelLogic;
+extern Model* modelMult;
+extern Model* modelProcess;
+extern Model* modelPush;
+extern Model* modelRandomValues;
+extern Model* modelRescale;
+extern Model* modelSHASR;
 
 
 struct DigitalDisplay : Widget {
@@ -100,3 +112,70 @@ struct YellowRedLight : TBase {
 		this->addBaseColor(SCHEME_RED);
 	}
 };
+
+template <typename TBase = GrayModuleLightWidget>
+struct YellowBlueLight : TBase {
+	YellowBlueLight() {
+		this->addBaseColor(SCHEME_YELLOW);
+		this->addBaseColor(SCHEME_BLUE);
+	}
+};
+
+
+struct VCVBezelBig : app::SvgSwitch {
+	VCVBezelBig() {
+		momentary = true;
+		addFrame(Svg::load(asset::plugin(pluginInstance, "res/VCVBezelBig.svg")));
+	}
+};
+
+
+template <typename TBase>
+struct VCVBezelLightBig : TBase {
+	VCVBezelLightBig() {
+		this->borderColor = color::BLACK_TRANSPARENT;
+		this->bgColor = color::BLACK_TRANSPARENT;
+		this->box.size = mm2px(math::Vec(11.1936, 11.1936));
+	}
+};
+
+
+/*MenuItem* createRangeItem(std::string label, float* gain, float* offset);*/
+
+static inline MenuItem* createRangeItem(std::string label, float* gain, float* offset) {
+	struct Range {
+		float gain;
+		float offset;
+
+		bool operator==(const Range& other) const {
+			return gain == other.gain && offset == other.offset;
+		}
+	};
+
+	static const std::vector<Range> ranges = {
+		{10.f, 0.f},
+		{5.f, 0.f},
+		{1.f, 0.f},
+		{20.f, -10.f},
+		{10.f, -5.f},
+		{2.f, -1.f},
+	};
+	static std::vector<std::string> labels;
+	if (labels.empty()) {
+		for (const Range& range : ranges) {
+			labels.push_back(string::f("%gV to %gV", range.offset, range.offset + range.gain));
+		}
+	}
+
+	return createIndexSubmenuItem(label, labels,
+		[=]() {
+			auto it = std::find(ranges.begin(), ranges.end(), Range{*gain, *offset});
+			return std::distance(ranges.begin(), it);
+		},
+		[=](int i) {
+			*gain = ranges[i].gain;
+			*offset = ranges[i].offset;
+		}
+	);
+}
+

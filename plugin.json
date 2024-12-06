@@ -60,7 +60,8 @@
         "VCA",
         "Dual",
         "Polyphonic"
-      ]
+      ],
+      "hidden": true
     },
     {
       "slug": "LFO",
@@ -131,6 +132,17 @@
         "Attenuator",
         "Polyphonic"
       ]
+    },
+    {
+      "slug": "Unity",
+      "name": "Unity",
+      "description": "Mixes or averages signals with unity gain",
+      "tags": [
+        "Mixer",
+        "Utility",
+        "Dual"
+      ],
+      "hidden": true
     },
     {
       "slug": "Mutes",
@@ -241,6 +253,16 @@
       ]
     },
     {
+      "slug": "Viz",
+      "name": "Viz",
+      "description": "Visualizes all channels of a polyphonic cable",
+      "manualUrl": "https://vcvrack.com/Free#Viz",
+      "tags": [
+        "Polyphonic",
+        "Visual"
+      ]
+    },
+    {
       "slug": "MidSide",
       "name": "Mid/Side",
       "description": "Encodes/decodes between mid/side and left/right stereo signals",
@@ -266,6 +288,122 @@
       "manualUrl": "https://vcvrack.com/Fundamental#Random",
       "tags": [
         "Random",
+        "Sample and hold"
+      ]
+    },
+    {
+      "slug": "CVMix",
+      "name": "CV Mix",
+      "description": "Mixes 3 CV signals with attenuverters",
+      "keywords": "CVMIX",
+      "manualUrl": "https://vcvrack.com/Free#CVMix",
+      "tags": [
+        "Mixer",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Fade",
+      "name": "Fade",
+      "description": "Crossfades audio or CV",
+      "manualUrl": "https://vcvrack.com/Free#Fade",
+      "tags": [
+        "Panning",
+        "Voltage-controlled amplifier",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Logic",
+      "name": "Logic",
+      "description": "Gate logic processor",
+      "manualUrl": "https://vcvrack.com/Free#Logic",
+      "tags": [
+        "Logic",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Compare",
+      "name": "Compare",
+      "description": "Compares two voltages",
+      "manualUrl": "https://vcvrack.com/Free#Compare",
+      "tags": [
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Gates",
+      "name": "Gates",
+      "description": "Gate processor",
+      "manualUrl": "https://vcvrack.com/Free#Gates",
+      "tags": [
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Process",
+      "name": "Process",
+      "description": "CV processor",
+      "manualUrl": "https://vcvrack.com/Free#Process",
+      "tags": [
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Mult",
+      "name": "Mult",
+      "description": "Copies a signal to 8 outputs",
+      "manualUrl": "https://vcvrack.com/Free#Mult",
+      "tags": [
+        "Multiple",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Rescale",
+      "name": "Rescale",
+      "description": "Rescales voltages with gain, offset, and range limiting",
+      "keywords": "RSCL",
+      "manualUrl": "https://vcvrack.com/Free#Rescale",
+      "tags": [
+        "Attenuator",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "RandomValues",
+      "name": "Random Values",
+      "description": "Generates 7 random fixed voltages",
+      "keywords": "RND",
+      "manualUrl": "https://vcvrack.com/Free#RandomValues",
+      "tags": [
+        "Random",
+        "Utility",
+        "Polyphonic"
+      ]
+    },
+    {
+      "slug": "Push",
+      "name": "Push",
+      "description": "Button with gate/trigger outputs and hold switch",
+      "manualUrl": "https://vcvrack.com/Free#Push",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "SHASR",
+      "name": "Sample & Hold Analog Shift Register",
+      "description": "8 channel sample & hold combined with a shift register",
+      "keywords": "S&H ASR",
+      "manualUrl": "https://vcvrack.com/Free#SHASR",
+      "tags": [
         "Sample and hold"
       ]
     }
